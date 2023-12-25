@@ -1,3 +1,4 @@
+import { fetchCurrentBalance } from "@/app/lib/data";
 import { formatCurrency } from "@/app/lib/utils";
 import { lusitana } from "@/app/ui/fonts";
 import { ArrowDownIcon, ArrowUpIcon, CurrencyRupeeIcon } from '@heroicons/react/24/outline';
@@ -6,20 +7,20 @@ const iconMap = {
     currentBalance: CurrencyRupeeIcon,
 };
 
-const currentBalance = 300;
+// const currentBalance = 300;
 
 export default async function CardWrapper() {
-    // const { currentBalance, totalMatches } = await fetchCardData();
+    const { current_balance } = await fetchCurrentBalance();
 
     return (
         <div className="grid gap-8 sm:grid-cols-2">
-            <Card title="Current Balance" value={currentBalance} type="currentBalance" />
+            <Card title="Current Balance" value={current_balance} type="currentBalance" />
             <TransactionCard />
         </div>
     );
 }
 
-export function Card({ title, value, type }: {
+export async function Card({ title, value, type }: {
     title: string;
     value: number;
     type: 'currentBalance';

@@ -5,6 +5,7 @@ import CardWrapper from "@/app/ui/earnings/Cards";
 import Pagination from "@/app/ui/earnings/Pagination";
 import EarningsTable from "@/app/ui/earnings/EarningsTable";
 import { CardsSkeleton, EarningsTableSkeleton } from "@/app/ui/skeletons";
+import { fetchEarningsPages } from "@/app/lib/data";
 
 export const metadata: Metadata = {
     title: "Earnings"
@@ -19,7 +20,7 @@ export default async function Page({
     };
 }) {
     const currentPage = Number(searchParams?.page) || 1;
-    const totalPages = 10;
+    const total_pages = await fetchEarningsPages();
 
     return (
         <>
@@ -34,7 +35,7 @@ export default async function Page({
                     <EarningsTable currentPage={currentPage} />
                 </Suspense>
                 <div className="mt-5 flex w-full justify-center">
-                    <Pagination totalPages={totalPages} />
+                    <Pagination totalPages={total_pages} />
                 </div>
             </div>
         </>

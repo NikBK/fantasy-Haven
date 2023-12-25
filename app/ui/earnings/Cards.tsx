@@ -1,10 +1,10 @@
+import { fetchEarnings } from "@/app/lib/data";
 import { formatCurrency } from "@/app/lib/utils";
 import { lusitana } from "@/app/ui/fonts";
 import {
     UserGroupIcon,
     CurrencyRupeeIcon,
     HandThumbUpIcon
-
 } from '@heroicons/react/24/outline';
 
 const iconMap = {
@@ -13,16 +13,16 @@ const iconMap = {
     totalVictory: HandThumbUpIcon,
 };
 
-const totalEarnings = 300, totalMatches = 200, totalVictory = 100;
+// const totalEarnings = 300, totalMatches = 200, totalVictory = 100;
 
 export default async function CardWrapper() {
-    // const { totalEarnings, totalMatches, totalVictory, numberOfCustomers } = await fetchCardData();
+    const { total_earnings, total_matches, total_matches_won } = await fetchEarnings();
 
     return (
         <div className="grid gap-4 sm:gap-6 sm:grid-cols-3">
-            <Card title="Total Earnings" value={totalEarnings} type="totalEarnings" />
-            <Card title="Total Matches" value={totalMatches} type="totalMatches" />
-            <Card title="Matches Won" value={totalVictory} type="totalVictory" />
+            <Card title="Total Earnings" value={total_earnings} type="totalEarnings" />
+            <Card title="Total Matches" value={total_matches} type="totalMatches" />
+            <Card title="Matches Won" value={total_matches_won} type="totalVictory" />
         </div>
     );
 }

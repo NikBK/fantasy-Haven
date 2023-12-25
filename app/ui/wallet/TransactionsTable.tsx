@@ -3,29 +3,30 @@
 // import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
 // import { fetchFilteredInvoices } from '@/app/lib/data';
 
+import { fetchTransactionsHistory } from "@/app/lib/data";
 import { formatCurrency, formatDateToLocal } from "@/app/lib/utils";
 
-const transactions = [
-    {
-        id: 1,
-        type: "Added",
-        amount: 200,
-        date: Date()
-    },
-    {
-        id: 2,
-        type: "Withdrawn",
-        amount: 50,
-        date: Date()
-    },
-]
+// const transactions = [
+//     {
+//         id: 1,
+//         type: "Added",
+//         amount: 200,
+//         date: Date()
+//     },
+//     {
+//         id: 2,
+//         type: "Withdrawn",
+//         amount: 50,
+//         date: Date()
+//     },
+// ]
 
 export default async function TransactionsTable({
     currentPage,
 }: {
     currentPage: number;
 }) {
-    //   const invoices = await fetchFilteredInvoices(currentPage);
+    const transactions = await fetchTransactionsHistory(currentPage);
 
     return (
         <div className="mt-6 flow-root">
@@ -38,10 +39,10 @@ export default async function TransactionsTable({
                                 className="mb-2 w-full rounded-md bg-white p-4 flex justify-between"
                             >
                                 <div>
-                                    <p className="text-lg font-medium">{invoice.type}</p>
+                                    <p className="text-lg font-medium capitalize">{invoice.type}</p>
                                     <p className="text-xs">{formatDateToLocal(invoice.date)}</p>
                                 </div>
-                                <p className="text-xl font-medium">
+                                <p className={`text-xl font-medium ${invoice.type == 'added' ? 'text-green-600' : 'text-red-600'}`}>
                                     {formatCurrency(invoice.amount)}
                                 </p>
                             </div>
@@ -70,10 +71,10 @@ export default async function TransactionsTable({
                                     <td className="whitespace-nowrap px-4 py-3">
                                         {formatDateToLocal(invoice.date)}
                                     </td>
-                                    <td className="whitespace-nowrap px-3 py-3">
+                                    <td className="whitespace-nowrap px-3 py-3 capitalize">
                                         {invoice.type}
                                     </td>
-                                    <td className="whitespace-nowrap px-3 py-3">
+                                    <td className={`whitespace-nowrap px-3 py-3 ${invoice.type == 'added' ? 'text-green-600' : 'text-red-600'}`}>
                                         {formatCurrency(invoice.amount)}
                                     </td>
                                 </tr>

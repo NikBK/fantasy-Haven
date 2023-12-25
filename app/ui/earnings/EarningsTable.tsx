@@ -3,29 +3,30 @@
 // import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
 // import { fetchFilteredInvoices } from '@/app/lib/data';
 
+import { fetchEarningsHistory } from "@/app/lib/data";
 import { formatCurrency, formatDateToLocal } from "@/app/lib/utils";
 
-const earnings = [
-    {
-        id: 1,
-        match: "RCB vs KKR",
-        amount: 200,
-        date: Date()
-    },
-    {
-        id: 2,
-        match: "RR vs CSK",
-        amount: 50,
-        date: Date()
-    },
-]
+// const earnings = [
+//     {
+//         id: 1,
+//         match: "RCB vs KKR",
+//         amount: 200,
+//         date: Date()
+//     },
+//     {
+//         id: 2,
+//         match: "RR vs CSK",
+//         amount: 50,
+//         date: Date()
+//     },
+// ]
 
 export default async function EarningsTable({
     currentPage,
 }: {
     currentPage: number;
 }) {
-    //   const invoices = await fetchFilteredInvoices(currentPage);
+    const earnings = await fetchEarningsHistory(currentPage);
 
     return (
         <div className="mt-6 flow-root">
@@ -38,12 +39,13 @@ export default async function EarningsTable({
                                 className="mb-2 w-full rounded-md bg-white p-4 flex justify-between"
                             >
                                 <div>
-                                    <p className="text-lg font-medium">{invoice.match}</p>
+                                    <p className="text-lg font-medium">{invoice.teams}</p>
                                     <p className="text-xs">{formatDateToLocal(invoice.date)}</p>
                                 </div>
-                                <p className="text-xl font-medium">
-                                    {formatCurrency(invoice.amount)}
-                                </p>
+                                <div>
+                                    <p className={`text-lg font-medium ${invoice.result == 'won' ? 'text-green-600' : 'text-red-600'}`}>{formatCurrency(invoice.amount)}</p>
+                                    <p className="text-xs text-right">{invoice.result}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -55,6 +57,9 @@ export default async function EarningsTable({
                                 </th>
                                 <th scope="col" className="px-3 py-5 font-medium">
                                     Match
+                                </th>
+                                <th scope="col" className="px-3 py-5 font-medium">
+                                    Result
                                 </th>
                                 <th scope="col" className="px-3 py-5 font-medium">
                                     Amount
@@ -71,9 +76,12 @@ export default async function EarningsTable({
                                         {formatDateToLocal(invoice.date)}
                                     </td>
                                     <td className="whitespace-nowrap px-3 py-3">
-                                        {invoice.match}
+                                        {invoice.teams}
                                     </td>
-                                    <td className="whitespace-nowrap px-3 py-3">
+                                    <td className="whitespace-nowrap px-3 py-3 lowercase">
+                                        {invoice.result}
+                                    </td>
+                                    <td className={`whitespace-nowrap px-3 py-3 ${invoice.result == 'won' ? 'text-green-600' : 'text-red-600'}`}>
                                         {formatCurrency(invoice.amount)}
                                     </td>
                                 </tr>
