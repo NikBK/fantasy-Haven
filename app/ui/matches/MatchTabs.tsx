@@ -27,7 +27,7 @@ const MatchTabs = () => {
                 <Link
                     href={tab.link}
                     key={index}
-                    className={`${pathname == tab.link ? 'bg-indigo-500 text-white' : ''} ${index == 0 ? 'rounded-s-md' : index == 2 ? 'rounded-e-md' : ''} py-2 px-2 sm:px-4 hover:bg-indigo-500 overflow-hidden`}
+                    className={`${pathname == tab.link ? 'bg-indigo-500 text-white' : ''} ${index == 0 ? 'rounded-s-2xl' : index == 2 ? 'rounded-e-2xl' : ''} py-2 px-2 sm:px-4 hover:bg-indigo-500 overflow-hidden`}
                 >
                     {tab.title}
                 </Link>
