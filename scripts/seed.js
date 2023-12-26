@@ -55,7 +55,7 @@ async function seedTransactions(client) {
             CREATE TABLE IF NOT EXISTS fantasytransactions (
                 transaction_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
                 user_id UUID NOT NULL,
-                date DATE NOT NULL,
+                date timestamptz NOT NULL,
                 transaction_type VARCHAR(255) NOT NULL,
                 amount FLOAT DEFAULT 0 NOT NULL,
                 transaction_status VARCHAR(20) DEFAULT 'pending' NOT NULL
@@ -96,7 +96,7 @@ async function seedEarnings(client) {
                 earning_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
                 user_id UUID NOT NULL,
                 match_id UUID NOT NULL,
-                date DATE NOT NULL,
+                date timestamptz NOT NULL,
                 teams VARCHAR(255) NOT NULL,
                 amount FLOAT DEFAULT 0 NOT NULL,
                 result VARCHAR(20) NOT NULL
@@ -214,7 +214,7 @@ async function seedMatches(client) {
                 team2_id UUID NOT NULL,
                 team1_name VARCHAR(255) NOT NULL,
                 team2_name VARCHAR(255) NOT NULL,
-                match_time DATE NOT NULL,
+                match_time timestamptz NOT NULL,
                 contest_amount FLOAT DEFAULT 0,
                 slots INT NOT NULL,
                 score VARCHAR(255),

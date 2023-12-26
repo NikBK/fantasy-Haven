@@ -138,3 +138,97 @@ export async function fetchCurrentBalance() {
         throw new Error('Failed to fetch current balance.');
     }
 }
+
+
+
+
+
+// FETCH UPCOMING MATCHES
+type matchType = {
+    id: string;
+    team1_name: string;
+    team2_name: string;
+    time: string;
+    amount: number;
+    slots: number;
+}
+export async function fetchUpcomingMatches(): Promise<matchType[]> {
+    try {
+        const matches = await sql<matchType>`
+            SELECT match_id AS id, team1_name, team2_name, match_time as time, contest_amount AS amount, slots 
+            FROM fantasymatches 
+            WHERE match_type = 'upcoming'
+            AND match_time > CURRENT_TIMESTAMP
+            ORDER BY match_time ASC;
+        `;
+        // console.log(matches.rows)
+
+        return matches.rows;
+    } catch (error) {
+        console.error('Failed to fetch upcoming matches:', error);
+        throw new Error('Failed to fetch upcoming matches.');
+    }
+}
+
+
+
+// FETCH PAST MATCHES
+type pastMatchType = {
+    id: string;
+    teams: string;
+    time: string;
+    score: string;
+    amount: number;
+    result: string;
+}
+export async function fetchPastMatches(): Promise<pastMatchType[]> {
+    const user = await getUserByEmail("nikhil@gmail.com");
+
+    try {
+        const matches = await sql<pastMatchType>`
+            SELECT 
+                fm.match_id AS id, fm.match_time AS time, fm.score,  
+                fe.teams, fe.amount, fe.result
+            FROM fantasymatches fm
+            JOIN fantasyearnings fe ON fm.match_id = fe.match_id
+            WHERE fm.match_type = 'past' AND fe.user_id = ${user.id}
+            ORDER BY fm.match_time DESC;
+        `;
+        // console.log(matches.rows)
+
+        return matches.rows;
+    } catch (error) {
+        console.error('Failed to fetch upcoming matches:', error);
+        throw new Error('Failed to fetch upcoming matches.');
+    }
+}
+
+
+
+// FETCH LIVE MATCHES
+type liveMatchType = {
+    id: string;
+    team1_name: string;
+    team2_name: string;
+    time: string;
+    score: string;
+    amount: number;
+}
+export async function fetchLiveMatches() {
+    const user = await getUserByEmail("nikhil@gmail.com");
+
+    try {
+        const matches = await sql<liveMatchType>`
+            SELECT match_id AS id, team1_name, team2_name, match_time AS time, contest_amount AS amount, score 
+            FROM fantasymatches
+            WHERE match_type = 'live'
+            ORDER BY match_time DESC;
+        `;
+        // console.log(matches.rows)
+
+        return matches.rows;
+    } catch (error) {
+        console.error('Failed to fetch live matches:', error);
+        throw new Error('Failed to fetch live matches.');
+    }
+}

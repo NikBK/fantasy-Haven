@@ -56,7 +56,7 @@ const earnings = [
         earning_id: "1b5b3a8b-2a1e-4b4c-9a5d-0e2a8a76b71d",
         user_id: "410544b2-4001-4271-9855-fec4b6a6442a",
         match_id: "f33d6c0a-9c2a-40e1-b7b2-7d1f8f4e5a8d",
-        date: new Date("11/23/2023 7:30 pm"),
+        date: new Date("11/7/2023 7:30 pm"),
         teams: "RCB vs CSK",
         amount: 120,
         result: "won"
@@ -65,16 +65,16 @@ const earnings = [
         earning_id: "2e9a8e15-1e8b-4c8a-8c96-3d81f3c6fe5d",
         user_id: "410544b2-4001-4271-9855-fec4b6a6442a",
         match_id: "9d3c8b12-4f7e-4c91-8e5a-6b6f8d2a7d4c",
-        date: new Date("11/21/2023 6:30 pm"),
+        date: new Date("11/21/2023 7:30 pm"),
         teams: "SRH vs KKR",
-        amount: 70,
+        amount: 100,
         result: "lost"
     },
     {
         earning_id: "3c7d8e9f-8a4b-4e6b-9d2c-1f3a4c5e6d7f",
         user_id: "410544b2-4001-4271-9855-fec4b6a6442a",
         match_id: "5f9e8d7c-6b5a-4d3c-9e1f-8a7b6c5d4e3f",
-        date: new Date("11/19/2023 5:38 pm"),
+        date: new Date("11/20/2023 7:30 pm"),
         teams: "MI vs DC",
         amount: 200,
         result: "won"
@@ -83,16 +83,16 @@ const earnings = [
         earning_id: "4d5e6f7a-9b8c-4a3e-8d2f-1c7b6a5a4a3e",
         user_id: "410544b2-4001-4271-9855-fec4b6a6442a",
         match_id: "7b8c9d0e-1a2b-3c4d-5e6f-7a8b9c0d1e2f",
-        date: new Date("11/12/2023 9:34 am"),
+        date: new Date("11/18/2023 3:30 pm"),
         teams: "RCB vs KKR",
-        amount: 70,
+        amount: 130,
         result: "lost"
     },
     {
         earning_id: "5e6f7a8b-9c0d-4e5f-8a9b-0c1d2e3f4a5b",
         user_id: "410544b2-4001-4271-9855-fec4b6a6442a",
         match_id: "3d2e1f0c-a9b8-7c6d-5e4f-3a2b1c0d9e8f",
-        date: new Date("11/2/2023 10:22 am"),
+        date: new Date("11/22/2023 7:30 pm"),
         teams: "MI vs CSK",
         amount: 200,
         result: "won"
@@ -771,7 +771,7 @@ const players = [
 
 const matches = [
     {
-        match_id: "cc9a6b3e-0bfa-4a70-8b2c-6a83c0d3b210",
+        match_id: "f33d6c0a-9c2a-40e1-b7b2-7d1f8f4e5a8d",
         team1_id: "9f51258e-65e7-4e2a-af50-764c04d50b99",
         team2_id: "af958d8a-9e01-4f0b-8bc7-525b96f26041",
         team1_name: "RCB",
@@ -781,7 +781,7 @@ const matches = [
         slots: 10,
         score: "RCB 150/5, CSK 140/8",
         result: "RCB won by 10 runs",
-        match_type: "Past"
+        match_type: "past"
     },
     {
         match_id: "ae09f1a7-3a0e-4429-94cc-0eb6933ac292",
@@ -794,7 +794,7 @@ const matches = [
         slots: 8,
         score: "MI 180/3, KKR 160/9",
         result: "pending",
-        match_type: "Live"
+        match_type: "live"
     },
     {
         match_id: "c0a68e6f-40a1-4a2c-8e07-efcdcf01a936",
@@ -807,7 +807,7 @@ const matches = [
         slots: 12,
         score: "SRH 12/1",
         result: "pending",
-        match_type: "Live"
+        match_type: "live"
     },
     {
         match_id: "f2f7247c-9c85-4e84-8da1-905c822b7a36",
@@ -815,12 +815,12 @@ const matches = [
         team2_id: "5a6473e0-4de1-46a1-845a-4d2a55a256ad",
         team1_name: "PBKS",
         team2_name: "RR",
-        match_time: new Date("11/24/2023 3:30 pm"),
+        match_time: new Date("2/11/2024 3:30 pm"),
         contest_amount: 50,
         slots: 15,
         score: "",
         result: "pending",
-        match_type: "Upcoming"
+        match_type: "upcoming"
     },
     {
         match_id: "8baf0c05-eb37-490f-9ba2-04b6a9a6d1d5",
@@ -828,15 +828,15 @@ const matches = [
         team2_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
         team1_name: "RCB",
         team2_name: "KKR",
-        match_time: new Date("11/24/2023 7:30 pm"),
+        match_time: new Date("2/24/2024 7:30 pm"),
         contest_amount: 100,
         slots: 10,
         score: "",
         result: "pending",
-        match_type: "Upcoming"
+        match_type: "upcoming"
     },
     {
-        match_id: "ca051703-82ee-44b3-8b4f-96cbcf32e4bf",
+        match_id: "5f9e8d7c-6b5a-4d3c-9e1f-8a7b6c5d4e3f",
         team1_id: "c29ea6da-8f60-49c4-b508-47761b7fca42",
         team2_id: "6c9c3bd7-9015-475f-ae7b-b6a00f66b38c",
         team1_name: "MI",
@@ -846,7 +846,7 @@ const matches = [
         slots: 8,
         score: "MI 210/3, DC 190/7",
         result: "MI won by 20 runs",
-        match_type: "Past"
+        match_type: "past"
     },
     {
         match_id: "14b67365-8018-4914-bf85-5c774ef18418",
@@ -854,12 +854,12 @@ const matches = [
         team2_id: "841a390c-53a7-4f32-97d5-dcfd743d3d5b",
         team1_name: "SRH",
         team2_name: "PBKS",
-        match_time: new Date("11/25/2023 7:30 pm"),
+        match_time: new Date("2/13/2024 7:30 pm"),
         contest_amount: 150,
         slots: 12,
         score: "",
         result: "pending",
-        match_type: "Upcoming"
+        match_type: "upcoming"
     },
     {
         match_id: "c2c80463-992b-4d91-91a2-8499f101c74c",
@@ -872,20 +872,20 @@ const matches = [
         slots: 15,
         score: "RR 16/0",
         result: "pending",
-        match_type: "Live"
+        match_type: "live"
     },
     {
-        match_id: "34e2a6de-c762-4c08-b5b2-8e6f3d7ff617",
-        team1_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
-        team2_id: "6c9c3bd7-9015-475f-ae7b-b6a00f66b38c",
-        team1_name: "KKR",
-        team2_name: "DC",
+        match_id: "7b8c9d0e-1a2b-3c4d-5e6f-7a8b9c0d1e2f",
+        team1_id: "9f51258e-65e7-4e2a-af50-764c04d50b99",
+        team2_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
+        team1_name: "RCB",
+        team2_name: "KKR",
         match_time: new Date("11/18/2023 3:30 pm"),
         contest_amount: 130,
         slots: 10,
-        score: "KKR 200/4, DC 190/8",
-        result: "KKR won by 10 runs",
-        match_type: "Past"
+        score: "RCB 200/4, KKR 190/8",
+        result: "RCB won by 10 runs",
+        match_type: "past"
     },
     {
         match_id: "5d9c3b1f-2053-4501-a1f3-daf7ef1c951a",
@@ -893,12 +893,12 @@ const matches = [
         team2_id: "5a6473e0-4de1-46a1-845a-4d2a55a256ad",
         team1_name: "SRH",
         team2_name: "RR",
-        match_time: new Date("11/25/2023 7:30 pm"),
+        match_time: new Date("1/25/2024 7:30 pm"),
         contest_amount: 110,
         slots: 12,
         score: "",
         result: "pending",
-        match_type: "Upcoming"
+        match_type: "upcoming"
     },
     {
         match_id: "ebf1b2a3-9e22-46e8-9ef0-201f7d89ea9c",
@@ -906,12 +906,12 @@ const matches = [
         team2_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
         team1_name: "PBKS",
         team2_name: "KKR",
-        match_time: new Date("11/25/2023 3:30 pm"),
+        match_time: new Date("1/25/2024 3:30 pm"),
         contest_amount: 80,
         slots: 8,
         score: "",
         result: "pending",
-        match_type: "Upcoming"
+        match_type: "upcoming"
     },
     {
         match_id: "a4e385a7-1cf0-40d3-9a9f-d4a1a19fe5d8",
@@ -919,12 +919,12 @@ const matches = [
         team2_id: "5a6473e0-4de1-46a1-845a-4d2a55a256ad",
         team1_name: "SRH",
         team2_name: "RR",
-        match_time: new Date("11/25/2023 7:30 pm"),
+        match_time: new Date("1/25/2024 7:30 pm"),
         contest_amount: 120,
         slots: 12,
         score: "",
         result: "pending",
-        match_type: "Upcoming"
+        match_type: "upcoming"
     },
     {
         match_id: "ca1749b2-82d1-4c48-8bfa-55c832c5f933",
@@ -932,38 +932,51 @@ const matches = [
         team2_id: "5a6473e0-4de1-46a1-845a-4d2a55a256ad",
         team1_name: "DC",
         team2_name: "RR",
-        match_time: new Date("11/26/2023 7:30 pm"),
+        match_time: new Date("1/26/2024 7:30 pm"),
         contest_amount: 150,
         slots: 15,
         score: "",
         result: "pending",
-        match_type: "Upcoming"
+        match_type: "upcoming"
     },
     {
-        match_id: "65c0d7bc-ec3d-48de-8db6-4b7baed4b318",
-        team1_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
-        team2_id: "d13c5f5b-bfe9-41ef-8be4-bbe4976b1c33",
-        team1_name: "KKR",
-        team2_name: "SRH",
+        match_id: "9d3c8b12-4f7e-4c91-8e5a-6b6f8d2a7d4c",
+        team1_id: "d13c5f5b-bfe9-41ef-8be4-bbe4976b1c33",
+        team2_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
+        team1_name: "SRH",
+        team2_name: "KKR",
         match_time: new Date("11/21/2023 7:30 pm"),
         contest_amount: 100,
         slots: 10,
         score: "KKR 170/5, SRH 160/9",
         result: "KKR won by 10 runs",
-        match_type: "Past"
+        match_type: "past"
     },
     {
-        match_id: "e77d3d7a-37b2-4930-86b4-1a1ebbe8bc0b",
-        team1_id: "841a390c-53a7-4f32-97d5-dcfd743d3d5b",
-        team2_id: "6c9c3bd7-9015-475f-ae7b-b6a00f66b38c",
-        team1_name: "PBKS",
-        team2_name: "DC",
+        match_id: "3d2e1f0c-a9b8-7c6d-5e4f-3a2b1c0d9e8f",
+        team1_id: "c29ea6da-8f60-49c4-b508-47761b7fca42",
+        team2_id: "af958d8a-9e01-4f0b-8bc7-525b96f26041",
+        team1_name: "MI",
+        team2_name: "CSK",
         match_time: new Date("11/22/2023 7:30 pm"),
         contest_amount: 100,
         slots: 13,
-        score: "PBKS 190/4, DC 180/7",
-        result: "PBKS won by 10 runs",
-        match_type: "Past"
+        score: "MI 190/4, CSK 180/7",
+        result: "MI won by 10 runs",
+        match_type: "past"
+    },
+    {
+        match_id: "038d430b-d0a0-47a2-8aa9-7abe7f9d3341",
+        team1_id: "af958d8a-9e01-4f0b-8bc7-525b96f26041",
+        team2_id: "6c9c3bd7-9015-475f-ae7b-b6a00f66b38c",
+        team1_name: "CSK",
+        team2_name: "DC",
+        match_time: new Date("1/22/2024 19:30"),
+        contest_amount: 25,
+        slots: 15,
+        score: "",
+        result: "",
+        match_type: "upcoming"
     },
     // Add more matches as needed
 ];

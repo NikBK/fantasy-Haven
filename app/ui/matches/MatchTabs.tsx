@@ -22,7 +22,7 @@ const MatchTabs = () => {
     const pathname = usePathname();
 
     return (
-        <div className='grid grid-cols-3 uppercase sticky -top-4 bg-[#f0f8ff]'>
+        <div className='grid grid-cols-3 uppercase sticky top-0 bg-[#f0f8ff]'>
             {matchTabs.map((tab: { title: string, link: string }, index: number) =>
                 <Link
                     href={tab.link}
