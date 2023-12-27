@@ -1,5 +1,6 @@
 import { sql } from "@vercel/postgres";
 import { currentBalanceType, earningsHistoryType, earningsType, liveMatchType, pastMatchType, transactionHistoryType, upcomingMatchType, userType } from "@/app/lib/typeDefinition";
+import { unstable_noStore as noStore } from 'next/cache';
 
 const ITEMS_PER_PAGE = 10;
 
@@ -20,6 +21,10 @@ export async function getUserByEmail(email: string): Promise<userType> {
 // EARNINGS TABLE RELATED QUERIES
 
 export async function fetchEarnings(): Promise<earningsType> {
+    // Add noStore() here prevent the response from being cached.
+    // This is equivalent to in fetch(..., {cache: 'no-store'}).
+    noStore();
+
     const user = await getUserByEmail('nikhil@gmail.com');
 
     try {
@@ -52,6 +57,7 @@ export async function fetchEarningsPages(): Promise<number> {
 }
 
 export async function fetchEarningsHistory(currentPage: number): Promise<earningsHistoryType[]> {
+    noStore();
     const user = await getUserByEmail('nikhil@gmail.com');
 
     const offset = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -90,6 +96,7 @@ export async function fetchTransactionsPages(): Promise<number> {
 }
 
 export async function fetchTransactionsHistory(currentPage: number): Promise<transactionHistoryType[]> {
+    noStore();
     const user = await getUserByEmail('nikhil@gmail.com');
 
     const offset = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -116,6 +123,7 @@ export async function fetchTransactionsHistory(currentPage: number): Promise<tra
 // GET BALANCE BY ADDING AND SUBTRACTING TRANSACTIONS AND EARNIGNS TABLES
 
 export async function fetchCurrentBalance(): Promise<currentBalanceType> {
+    noStore();
     const user = await getUserByEmail('nikhil@gmail.com');
 
     try {
@@ -146,6 +154,7 @@ export async function fetchCurrentBalance(): Promise<currentBalanceType> {
 
 // FETCH UPCOMING MATCHES
 export async function fetchUpcomingMatches(): Promise<upcomingMatchType[]> {
+    noStore();
     try {
         const matches = await sql<upcomingMatchType>`
             SELECT match_id AS id, team1_name, team2_name, match_time as time, contest_amount AS amount, slots 
@@ -167,6 +176,7 @@ export async function fetchUpcomingMatches(): Promise<upcomingMatchType[]> {
 
 // FETCH PAST MATCHES
 export async function fetchPastMatches(): Promise<pastMatchType[]> {
+    noStore();
     const user = await getUserByEmail("nikhil@gmail.com");
 
     try {
@@ -192,6 +202,7 @@ export async function fetchPastMatches(): Promise<pastMatchType[]> {
 
 // FETCH LIVE MATCHES
 export async function fetchLiveMatches(): Promise<liveMatchType[]> {
+    noStore();
     const user = await getUserByEmail("nikhil@gmail.com");
 
     try {
