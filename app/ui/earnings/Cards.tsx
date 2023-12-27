@@ -1,4 +1,5 @@
 import { fetchEarnings } from "@/app/lib/data";
+import { earningsType } from "@/app/lib/typeDefinition";
 import { formatCurrency } from "@/app/lib/utils";
 import { lusitana } from "@/app/ui/fonts";
 import {
@@ -16,7 +17,7 @@ const iconMap = {
 // const totalEarnings = 300, totalMatches = 200, totalVictory = 100;
 
 export default async function CardWrapper() {
-    const { total_earnings, total_matches, total_matches_won } = await fetchEarnings();
+    const { total_earnings, total_matches, total_matches_won }: earningsType = await fetchEarnings();
 
     return (
         <div className="grid gap-4 sm:gap-6 sm:grid-cols-3">

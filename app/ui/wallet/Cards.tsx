@@ -1,4 +1,5 @@
 import { fetchCurrentBalance } from "@/app/lib/data";
+import { currentBalanceType } from "@/app/lib/typeDefinition";
 import { formatCurrency } from "@/app/lib/utils";
 import { lusitana } from "@/app/ui/fonts";
 import { ArrowDownIcon, ArrowUpIcon, CurrencyRupeeIcon } from '@heroicons/react/24/outline';
@@ -10,7 +11,7 @@ const iconMap = {
 // const currentBalance = 300;
 
 export default async function CardWrapper() {
-    const { current_balance } = await fetchCurrentBalance();
+    const { current_balance }: currentBalanceType = await fetchCurrentBalance();
 
     return (
         <div className="grid gap-8 sm:grid-cols-2">

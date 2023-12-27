@@ -24,3 +24,36 @@ export type liveMatchType = {
     score: string;
     amount: number;
 }
+
+export type currentBalanceType = {
+    current_balance: number;
+}
+
+export type transactionHistoryType = {
+    id: string;
+    type: string;
+    amount: number;
+    date: string;
+}
+
+export type earningsHistoryType = {
+    id: string;
+    teams: string;
+    date: string;
+    amount: number;
+    result: string;
+}
+
+export type earningsType = {
+    total_earnings: number;
+    total_matches: number;
+    total_matches_won: number;
+}
+
+export type userType = {
+    id: string;
+    name: string;
+    email: string;
+    password: string;
+    username: string;
+}

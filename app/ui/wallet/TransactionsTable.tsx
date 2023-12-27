@@ -4,6 +4,7 @@
 // import { fetchFilteredInvoices } from '@/app/lib/data';
 
 import { fetchTransactionsHistory } from "@/app/lib/data";
+import { transactionHistoryType } from "@/app/lib/typeDefinition";
 import { formatCurrency, formatDateToLocal } from "@/app/lib/utils";
 
 // const transactions = [
@@ -26,7 +27,7 @@ export default async function TransactionsTable({
 }: {
     currentPage: number;
 }) {
-    const transactions = await fetchTransactionsHistory(currentPage);
+    const transactions: transactionHistoryType[] = await fetchTransactionsHistory(currentPage);
 
     return (
         <div className="mt-6 flow-root">

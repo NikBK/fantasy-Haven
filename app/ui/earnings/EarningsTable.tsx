@@ -4,6 +4,7 @@
 // import { fetchFilteredInvoices } from '@/app/lib/data';
 
 import { fetchEarningsHistory } from "@/app/lib/data";
+import { earningsHistoryType } from "@/app/lib/typeDefinition";
 import { formatCurrency, formatDateToLocal } from "@/app/lib/utils";
 
 // const earnings = [
@@ -26,7 +27,7 @@ export default async function EarningsTable({
 }: {
     currentPage: number;
 }) {
-    const earnings = await fetchEarningsHistory(currentPage);
+    const earnings: earningsHistoryType[] = await fetchEarningsHistory(currentPage);
 
     return (
         <div className="mt-6 flow-root">
