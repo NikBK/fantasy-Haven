@@ -63,3 +63,7 @@ export const getBasePath = () => {
     const basePath = '/' + pathname.split('/')[1];
     return basePath;
 }
+
+export function generateUsername(name: string) {
+    return name.toUpperCase().split(' ').map(word => word[0]).join('');
+}

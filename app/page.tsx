@@ -1,8 +1,11 @@
 import Link from 'next/link';
-import SimpleCarousel from '@/app/ui/home/ImageCarousel';
+import { getServerSession } from 'next-auth';
 import { lusitana } from '@/app/ui/fonts';
+import SimpleCarousel from '@/app/ui/home/ImageCarousel';
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession();
+
   return (
     <div className="bg-gray-100 min-h-full flex flex-col items-center justify-center">
       <main className="text-center">
@@ -14,7 +17,7 @@ export default function Home() {
 
         <SimpleCarousel />
 
-        <Link href="/signup" className="bg-blue-500 text-white px-6 py-3 rounded-full text-lg font-semibold transition duration-300 hover:bg-blue-600">
+        <Link href={session ? '/matches' : '/login'} className="bg-blue-500 text-white px-6 py-3 rounded-full text-lg font-semibold transition duration-300 hover:bg-blue-600">
           Get Started
         </Link>
       </main>

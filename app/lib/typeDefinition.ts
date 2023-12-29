@@ -57,3 +57,10 @@ export type userType = {
     password: string;
     username: string;
 }
+
+export type createUserType = {
+    name: string;
+    email: string;
+    hashedPassword: string;
+    userName: string;
+}
