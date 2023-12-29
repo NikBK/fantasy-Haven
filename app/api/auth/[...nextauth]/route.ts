@@ -3,7 +3,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 
-export const authOptions = {
+const authOptions = {
     providers: [
         CredentialsProvider({
             credentials: {
@@ -23,7 +23,7 @@ export const authOptions = {
                     };
                 }
                 console.log("Failed logging in ", user, ", Is password correct ? ", isPasswordCorrect);
-                return null
+                return null;
             }
         })
     ]
