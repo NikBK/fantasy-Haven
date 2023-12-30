@@ -4,7 +4,7 @@ import { lusitana } from "@/app/ui/fonts";
 import CardWrapper from "@/app/ui/earnings/Cards";
 import Pagination from "@/app/ui/earnings/Pagination";
 import EarningsTable from "@/app/ui/earnings/EarningsTable";
-import { CardsSkeleton, EarningsTableSkeleton } from "@/app/ui/skeletons";
+import { EarningsCardsSkeleton, EarningsTableSkeleton } from "@/app/ui/skeletons";
 import { fetchEarningsPages } from "@/app/lib/data";
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default async function Page({
 
     return (
         <>
-            <Suspense fallback={<CardsSkeleton />}>
+            <Suspense fallback={<EarningsCardsSkeleton />}>
                 <CardWrapper />
             </Suspense>
             <div className="bg-white rounded-md py-2 my-4">

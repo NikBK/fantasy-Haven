@@ -9,7 +9,7 @@ export function CardSkeleton() {
         >
             <div className="flex p-4">
                 <div className="h-5 w-5 rounded-md bg-gray-200" />
-                <div className="ml-2 h-6 w-16 rounded-md bg-gray-200 text-sm font-medium" />
+                <div className="ml-2 h-6 w-24 rounded-md bg-gray-200 text-sm font-medium" />
             </div>
             <div className="flex items-center justify-center truncate rounded-xl bg-white px-4 py-8">
                 <div className="h-7 w-20 rounded-md bg-gray-200" />
@@ -20,11 +20,11 @@ export function CardSkeleton() {
 
 export function CardsSkeleton() {
     return (
-        <>
+        <div className="animate-pulse grid gap-4 sm:gap-6 sm:grid-cols-3">
             <CardSkeleton />
             <CardSkeleton />
             <CardSkeleton />
-        </>
+        </div>
     );
 }
 
@@ -104,52 +104,187 @@ export function TableRowSkeleton() {
     );
 }
 
+
+
+// TRANSACTIONS RELATED SKELETONS
+
+export function TransactionButtonsCardSkeleton() {
+    return (
+        <div className="rounded-xl bg-gray-50 p-2 shadow-sm flex flex-col justify-center items-center">
+            <div className="h-8 w-24 my-2 rounded-xl bg-gray-200" />
+            <div className="h-8 w-32 my-2 rounded-xl bg-gray-200" />
+        </div>
+    );
+}
+
+export function TransactionsCardsSkeleton() {
+    return (
+        <div className="animate-pulse grid gap-8 sm:grid-cols-2">
+            <CardSkeleton />
+            <TransactionButtonsCardSkeleton />
+        </div>
+    );
+}
+
+export function TransactionsMobileSkeleton() {
+    return (
+        <div className="mb-2 w-full rounded-md bg-white p-4 flex justify-between animate-pulse">
+            <div>
+                <div className="h-8 w-24 bg-gray-200 rounded mb-1"></div>
+                <div className="h-4 w-32 bg-gray-200"></div>
+            </div>
+            <div>
+                <div className="h-8 w-20 bg-gray-200 rounded mb-1"></div>
+            </div>
+        </div >
+    )
+}
+
+export function TransactionsTableRowSkeleton() {
+    return (
+        <tr className="animate-pulse w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
+            <td className="whitespace-nowrap px-4 py-3">
+                <div className="h-6 w-36 rounded bg-gray-200"></div>
+            </td>
+            <td className="whitespace-nowrap px-3 py-3">
+                <div className="h-6 w-14 rounded bg-gray-200"></div>
+            </td>
+            <td className="whitespace-nowrap px-3 py-3">
+                <div className="h-6 w-16 rounded bg-gray-200"></div>
+            </td>
+        </tr>
+    )
+}
+
+export function TransactionsTableSkeleton() {
+    return (
+        <div className="mt-6 flow-root">
+            <div className="inline-block min-w-full align-middle">
+                <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
+                    <div className="md:hidden">
+                        <TransactionsMobileSkeleton />
+                        <TransactionsMobileSkeleton />
+                        <TransactionsMobileSkeleton />
+                        <TransactionsMobileSkeleton />
+                        <TransactionsMobileSkeleton />
+                        <TransactionsMobileSkeleton />
+                    </div>
+                    <table className="hidden min-w-full text-gray-900 md:table">
+                        <thead className="rounded-lg text-left text-sm font-normal">
+                            <tr>
+                                <th scope="col" className="px-4 py-5 font-medium">
+                                    Date
+                                </th>
+                                <th scope="col" className="px-3 py-5 font-medium">
+                                    Type
+                                </th>
+                                <th scope="col" className="px-3 py-5 font-medium">
+                                    Amount
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody className="bg-white">
+                            <TransactionsTableRowSkeleton />
+                            <TransactionsTableRowSkeleton />
+                            <TransactionsTableRowSkeleton />
+                            <TransactionsTableRowSkeleton />
+                            <TransactionsTableRowSkeleton />
+                            <TransactionsTableRowSkeleton />
+                            <TransactionsTableRowSkeleton />
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+
+
+// EARNIGNS RELATED SKELETONS
+
+export function EarningsCardsSkeleton() {
+    return (
+        <div className="animate-pulse grid gap-4 sm:gap-6 sm:grid-cols-3">
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+        </div>
+    );
+}
+
+export function EarningsTableRowSkeleton() {
+    return (
+        <tr className="animate-pulse w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
+            <td className="whitespace-nowrap px-4 py-3">
+                <div className="h-6 w-36 rounded bg-gray-200"></div>
+            </td>
+            <td className="whitespace-nowrap px-3 py-3">
+                <div className="h-6 w-16 rounded bg-gray-200"></div>
+            </td>
+            <td className="whitespace-nowrap px-3 py-3 lowercase">
+                <div className="h-6 w-14 rounded bg-gray-200"></div>
+            </td>
+            <td className="whitespace-nowrap px-3 py-3">
+                <div className="h-6 w-16 rounded bg-gray-200"></div>
+            </td>
+        </tr>
+    )
+}
+
+export function EarningsMobileSkeleton() {
+    return (
+        <div className="mb-2 w-full rounded-md bg-white p-4 flex justify-between animate-pulse">
+            <div>
+                <div className="h-8 w-24 bg-gray-200 rounded mb-1"></div>
+                <div className="h-4 w-32 bg-gray-200"></div>
+            </div>
+            <div>
+                <div className="h-8 w-20 bg-gray-200 rounded mb-1"></div>
+                <div className="h-4 w-8 bg-gray-200 float-right"></div>
+            </div>
+        </div >
+    )
+}
+
 export function EarningsTableSkeleton() {
     return (
         <div className="mt-6 flow-root">
             <div className="inline-block min-w-full align-middle">
                 <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
                     <div className="md:hidden">
-                        <InvoicesMobileSkeleton />
-                        <InvoicesMobileSkeleton />
-                        <InvoicesMobileSkeleton />
-                        <InvoicesMobileSkeleton />
-                        <InvoicesMobileSkeleton />
-                        <InvoicesMobileSkeleton />
+                        <EarningsMobileSkeleton />
+                        <EarningsMobileSkeleton />
+                        <EarningsMobileSkeleton />
+                        <EarningsMobileSkeleton />
+                        <EarningsMobileSkeleton />
+                        <EarningsMobileSkeleton />
                     </div>
                     <table className="hidden min-w-full text-gray-900 md:table">
                         <thead className="rounded-lg text-left text-sm font-normal">
                             <tr>
-                                <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
-                                    Customer
+                                <th scope="col" className="px-4 py-5 font-medium">
+                                    Date
                                 </th>
                                 <th scope="col" className="px-3 py-5 font-medium">
-                                    Email
+                                    Match
+                                </th>
+                                <th scope="col" className="px-3 py-5 font-medium">
+                                    Result
                                 </th>
                                 <th scope="col" className="px-3 py-5 font-medium">
                                     Amount
                                 </th>
-                                <th scope="col" className="px-3 py-5 font-medium">
-                                    Date
-                                </th>
-                                <th scope="col" className="px-3 py-5 font-medium">
-                                    Status
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="relative pb-4 pl-3 pr-6 pt-2 sm:pr-6"
-                                >
-                                    <span className="sr-only">Edit</span>
-                                </th>
                             </tr>
                         </thead>
                         <tbody className="bg-white">
-                            <TableRowSkeleton />
-                            <TableRowSkeleton />
-                            <TableRowSkeleton />
-                            <TableRowSkeleton />
-                            <TableRowSkeleton />
-                            <TableRowSkeleton />
+                            <EarningsTableRowSkeleton />
+                            <EarningsTableRowSkeleton />
+                            <EarningsTableRowSkeleton />
+                            <EarningsTableRowSkeleton />
+                            <EarningsTableRowSkeleton />
+                            <EarningsTableRowSkeleton />
+                            <EarningsTableRowSkeleton />
                         </tbody>
                     </table>
                 </div>

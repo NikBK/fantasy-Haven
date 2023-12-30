@@ -1,8 +1,3 @@
-// import Image from 'next/image';
-// import InvoiceStatus from '@/app/ui/invoices/status';
-// import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
-// import { fetchFilteredInvoices } from '@/app/lib/data';
-
 import { fetchTransactionsHistory } from "@/app/lib/data";
 import { transactionHistoryType } from "@/app/lib/typeDefinition";
 import { formatCurrency, formatDateToLocal } from "@/app/lib/utils";
