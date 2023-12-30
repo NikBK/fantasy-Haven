@@ -31,9 +31,17 @@ export default async function Page({
                 <div className="flex w-full items-center justify-between px-5 mt-4">
                     <h1 className={`${lusitana.className} text-2xl`}>Past Earnings</h1>
                 </div>
-                <Suspense fallback={<EarningsTableSkeleton />}>
-                    <EarningsTable currentPage={currentPage} />
-                </Suspense>
+                {total_pages > 0 ?
+                    <>
+                        <Suspense fallback={<EarningsTableSkeleton />}>
+                            <EarningsTable currentPage={currentPage} />
+                        </Suspense>
+                    </> :
+                    <>
+                        <div className="mt-5 text-center">No earnings found</div>
+                    </>
+                }
+
                 <div className="mt-5 flex w-full justify-center">
                     <Pagination totalPages={total_pages} />
                 </div>

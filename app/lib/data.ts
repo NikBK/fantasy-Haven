@@ -1,8 +1,9 @@
 import { sql } from "@vercel/postgres";
 import { currentBalanceType, earningsHistoryType, earningsType, liveMatchType, pastMatchType, transactionHistoryType, upcomingMatchType, userType } from "@/app/lib/typeDefinition";
 import { unstable_noStore as noStore } from 'next/cache';
+import { getServerSession } from "next-auth";
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 5;
 
 export async function getUserByEmail(email: string): Promise<userType> {
     try {
@@ -25,9 +26,11 @@ export async function fetchEarnings(): Promise<earningsType> {
     // This is equivalent to in fetch(..., {cache: 'no-store'}).
     noStore();
 
-    const user = await getUserByEmail('nikhil@gmail.com');
-
     try {
+        const session = await getServerSession();
+        const userEmail = session?.user?.email || '';
+        const user = await getUserByEmail(userEmail);
+
         const earnings = await sql<earningsType>`
             SELECT 
                 COALESCE(SUM(CASE WHEN result = 'won' THEN amount ELSE 0 END), 0) AS total_earnings, 
@@ -46,7 +49,11 @@ export async function fetchEarnings(): Promise<earningsType> {
 
 export async function fetchEarningsPages(): Promise<number> {
     try {
-        const totalPages = await sql`SELECT COUNT(*) AS total_pages FROM fantasyearnings`;
+        const session = await getServerSession();
+        const userEmail = session?.user?.email || '';
+        const user = await getUserByEmail(userEmail);
+
+        const totalPages = await sql`SELECT COUNT(*) AS total_pages FROM fantasyearnings WHERE user_id=${user.id}`;
         // console.log(totalPages.rows[0]);
 
         return Math.ceil(totalPages.rows[0].total_pages / ITEMS_PER_PAGE);
@@ -58,11 +65,14 @@ export async function fetchEarningsPages(): Promise<number> {
 
 export async function fetchEarningsHistory(currentPage: number): Promise<earningsHistoryType[]> {
     noStore();
-    const user = await getUserByEmail('nikhil@gmail.com');
 
     const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
     try {
+        const session = await getServerSession();
+        const userEmail = session?.user?.email || '';
+        const user = await getUserByEmail(userEmail);
+
         const earningsHistory = await sql<earningsHistoryType>`
             SELECT earning_id AS id, teams, date, amount, result FROM fantasyearnings 
             WHERE user_id = ${user.id}
@@ -85,7 +95,11 @@ export async function fetchEarningsHistory(currentPage: number): Promise<earning
 
 export async function fetchTransactionsPages(): Promise<number> {
     try {
-        const totalPages = await sql`SELECT COUNT(*) AS total_pages FROM fantasytransactions`;
+        const session = await getServerSession();
+        const userEmail = session?.user?.email || '';
+        const user = await getUserByEmail(userEmail);
+
+        const totalPages = await sql`SELECT COUNT(*) AS total_pages FROM fantasytransactions WHERE user_id=${user.id}`;
         // console.log(totalPages.rows[0]);
 
         return Math.ceil(totalPages.rows[0].total_pages / ITEMS_PER_PAGE);
@@ -97,11 +111,14 @@ export async function fetchTransactionsPages(): Promise<number> {
 
 export async function fetchTransactionsHistory(currentPage: number): Promise<transactionHistoryType[]> {
     noStore();
-    const user = await getUserByEmail('nikhil@gmail.com');
 
     const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
     try {
+        const session = await getServerSession();
+        const userEmail = session?.user?.email || '';
+        const user = await getUserByEmail(userEmail);
+
         const transactionsHistory = await sql<transactionHistoryType>`
             SELECT transaction_id AS id, date, transaction_type AS type, amount FROM fantasytransactions 
             WHERE user_id = ${user.id}
@@ -124,9 +141,12 @@ export async function fetchTransactionsHistory(currentPage: number): Promise<tra
 
 export async function fetchCurrentBalance(): Promise<currentBalanceType> {
     noStore();
-    const user = await getUserByEmail('nikhil@gmail.com');
 
     try {
+        const session = await getServerSession();
+        const userEmail = session?.user?.email || '';
+        const user = await getUserByEmail(userEmail);
+
         const currentBalance = await sql<currentBalanceType>`
         SELECT COALESCE(SUM(CASE WHEN condition = 'added' OR condition = 'won' THEN amount ELSE -amount END), 0) AS current_balance
         FROM (
@@ -177,9 +197,12 @@ export async function fetchUpcomingMatches(): Promise<upcomingMatchType[]> {
 // FETCH PAST MATCHES
 export async function fetchPastMatches(): Promise<pastMatchType[]> {
     noStore();
-    const user = await getUserByEmail("nikhil@gmail.com");
 
     try {
+        const session = await getServerSession();
+        const userEmail = session?.user?.email || '';
+        const user = await getUserByEmail(userEmail);
+
         const matches = await sql<pastMatchType>`
             SELECT 
                 fm.match_id AS id, fm.match_time AS time, fm.score,  
@@ -203,9 +226,12 @@ export async function fetchPastMatches(): Promise<pastMatchType[]> {
 // FETCH LIVE MATCHES
 export async function fetchLiveMatches(): Promise<liveMatchType[]> {
     noStore();
-    const user = await getUserByEmail("nikhil@gmail.com");
 
     try {
+        const session = await getServerSession();
+        const userEmail = session?.user?.email || '';
+        const user = await getUserByEmail(userEmail);
+
         const matches = await sql<liveMatchType>`
             SELECT match_id AS id, team1_name, team2_name, match_time AS time, contest_amount AS amount, score 
             FROM fantasymatches
