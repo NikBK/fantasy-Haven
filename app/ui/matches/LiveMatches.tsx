@@ -35,6 +35,7 @@ const LiveMatches = async () => {
 
     return (
         <>
+            <div className={`${matches.length == 0 ? '' : 'hidden'} mt-4`}>No Matches found</div>
             {matches.map((match: liveMatchType, index: number) => (
                 <Card match={match} key={index} />
             ))}
@@ -43,6 +44,7 @@ const LiveMatches = async () => {
 }
 
 const dateOption: Intl.DateTimeFormatOptions = {
+    timeZone: 'Asia/Kolkata',
     hour: 'numeric',
     minute: 'numeric',
 }

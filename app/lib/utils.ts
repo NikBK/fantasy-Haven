@@ -1,6 +1,7 @@
 import { usePathname } from 'next/navigation';
 
 const defaultDateOptions: Intl.DateTimeFormatOptions = {
+    timeZone: 'Asia/Kolkata',
     day: 'numeric',
     month: 'short',
     year: 'numeric',

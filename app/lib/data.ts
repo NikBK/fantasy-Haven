@@ -36,7 +36,7 @@ export async function fetchEarnings(): Promise<earningsType> {
                 COALESCE(SUM(CASE WHEN result = 'won' THEN amount ELSE 0 END), 0) AS total_earnings, 
                 COALESCE(COUNT(*), 0) AS total_matches,
                 COALESCE(SUM(CASE WHEN result = 'won' THEN 1 ELSE 0 END), 0) AS total_matches_won
-            FROM fantasyearnings WHERE user_id=${user.id}
+            FROM fantasyearnings WHERE user_id=${user?.id}
         `;
         // console.log(earnings.rows[0]);
 
@@ -53,7 +53,7 @@ export async function fetchEarningsPages(): Promise<number> {
         const userEmail = session?.user?.email || '';
         const user = await getUserByEmail(userEmail);
 
-        const totalPages = await sql`SELECT COUNT(*) AS total_pages FROM fantasyearnings WHERE user_id=${user.id}`;
+        const totalPages = await sql`SELECT COUNT(*) AS total_pages FROM fantasyearnings WHERE user_id=${user?.id}`;
         // console.log(totalPages.rows[0]);
 
         return Math.ceil(totalPages.rows[0].total_pages / ITEMS_PER_PAGE);
@@ -75,7 +75,7 @@ export async function fetchEarningsHistory(currentPage: number): Promise<earning
 
         const earningsHistory = await sql<earningsHistoryType>`
             SELECT earning_id AS id, teams, date, amount, result FROM fantasyearnings 
-            WHERE user_id = ${user.id}
+            WHERE user_id = ${user?.id}
             ORDER BY date DESC
             LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
         `;
@@ -99,7 +99,7 @@ export async function fetchTransactionsPages(): Promise<number> {
         const userEmail = session?.user?.email || '';
         const user = await getUserByEmail(userEmail);
 
-        const totalPages = await sql`SELECT COUNT(*) AS total_pages FROM fantasytransactions WHERE user_id=${user.id}`;
+        const totalPages = await sql`SELECT COUNT(*) AS total_pages FROM fantasytransactions WHERE user_id=${user?.id}`;
         // console.log(totalPages.rows[0]);
 
         return Math.ceil(totalPages.rows[0].total_pages / ITEMS_PER_PAGE);
@@ -121,7 +121,7 @@ export async function fetchTransactionsHistory(currentPage: number): Promise<tra
 
         const transactionsHistory = await sql<transactionHistoryType>`
             SELECT transaction_id AS id, date, transaction_type AS type, amount FROM fantasytransactions 
-            WHERE user_id = ${user.id}
+            WHERE user_id = ${user?.id}
             ORDER BY date DESC
             LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
         `;
@@ -151,12 +151,12 @@ export async function fetchCurrentBalance(): Promise<currentBalanceType> {
         SELECT COALESCE(SUM(CASE WHEN condition = 'added' OR condition = 'won' THEN amount ELSE -amount END), 0) AS current_balance
         FROM (
             SELECT amount, transaction_type AS condition FROM fantasytransactions 
-            WHERE user_id =  ${user.id}
+            WHERE user_id =  ${user?.id}
 
             UNION ALL
 
             SELECT amount, result AS condition FROM fantasyearnings 
-            WHERE user_id =  ${user.id}
+            WHERE user_id =  ${user?.id}
         ) AS combined_table;     
         `;
         // console.log(currentBalance.rows[0]);
@@ -209,15 +209,15 @@ export async function fetchPastMatches(): Promise<pastMatchType[]> {
                 fe.teams, fe.amount, fe.result
             FROM fantasymatches fm
             JOIN fantasyearnings fe ON fm.match_id = fe.match_id
-            WHERE fm.match_type = 'past' AND fe.user_id = ${user.id}
+            WHERE fm.match_type = 'past' AND fe.user_id = ${user?.id}
             ORDER BY fm.match_time DESC;
         `;
         // console.log(matches.rows)
 
         return matches.rows;
     } catch (error) {
-        console.error('Failed to fetch upcoming matches:', error);
-        throw new Error('Failed to fetch upcoming matches.');
+        console.error('Failed to fetch past matches:', error);
+        throw new Error('Failed to fetch past matches. ' + error);
     }
 }
 

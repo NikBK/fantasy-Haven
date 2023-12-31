@@ -39,6 +39,7 @@ const PastMatches = async () => {
 
     return (
         <>
+            <div className={`${matches.length == 0 ? '' : 'hidden'} mt-4`}>No Matches found</div>
             {matches.map((match: pastMatchType, index: number) => (
                 <Card match={match} key={index} />
             ))}
@@ -47,6 +48,7 @@ const PastMatches = async () => {
 }
 
 const dateOption: Intl.DateTimeFormatOptions = {
+    timeZone: 'Asia/Kolkata',
     day: 'numeric',
     month: 'short',
     hour: 'numeric',
