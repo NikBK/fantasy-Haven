@@ -64,3 +64,15 @@ export type createUserType = {
     hashedPassword: string;
     userName: string;
 }
+
+export type playersDetailsType = {
+    player_id: string;
+    player_name: string;
+    role: 'wicket keeper' | 'batsman' | 'all-rounder' | 'bowler';
+    team_name: string;
+}
+
+export type captainType = {
+    player_id: string;
+    player_name: string;
+}

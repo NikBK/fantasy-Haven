@@ -173,6 +173,7 @@ async function seedPlayers(client) {
             CREATE TABLE IF NOT EXISTS fantasyplayers (
                 player_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
                 player_name VARCHAR(255) NOT NULL,
+                role VARCHAR(255) NOT NULL,
                 team_id UUID NOT NULL,
                 team_name VARCHAR(255) NOT NULL
             );
@@ -184,8 +185,8 @@ async function seedPlayers(client) {
         const insertedPlayers = await Promise.all(
             players.map(async (player) => {
                 return client.sql`
-                    INSERT INTO fantasyplayers (player_id, player_name, team_id, team_name)
-                    VALUES (${player.player_id}, ${player.player_name}, ${player.team_id}, ${player.team_name})
+                    INSERT INTO fantasyplayers (player_id, player_name, role, team_id, team_name)
+                    VALUES (${player.player_id}, ${player.player_name}, ${player.role}, ${player.team_id}, ${player.team_name})
                     ON CONFLICT (player_id) DO NOTHING;
                 `;
             })

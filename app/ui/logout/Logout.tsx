@@ -2,10 +2,12 @@
 
 import { PowerIcon } from '@heroicons/react/24/outline';
 import { signOut } from 'next-auth/react';
+import { redirect } from 'next/navigation';
 
 const Logout = () => {
     const handleLogout = async () => {
         await signOut();
+        redirect('/');
     }
 
     return (

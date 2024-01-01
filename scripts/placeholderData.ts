@@ -1,10 +1,17 @@
 const users = [
     {
-        id: "410544b2-4001-4271-9855-fec4b6a6442a",
+        id: "85ddf06a-0b53-4476-ae7e-117d7dffe6af",
         name: "Nikhil BK",
         email: "nikhil@gmail.com",
         password: "nikhil@123",
         username: "NBK"
+    },
+    {
+        id: "410544b2-4001-4271-9855-fec4b6a6442a",
+        name: "Test User",
+        email: "tester@gmail.com",
+        password: "mytest123",
+        username: "TU"
     },
 ];
 
@@ -242,528 +249,616 @@ const players = [
     {
         player_id: "cc9a6b3e-0bfa-4a70-8b2c-6a83c0d3b210",
         player_name: "Virat Kohli",
+        role: 'batsman',
         team_id: "9f51258e-65e7-4e2a-af50-764c04d50b99",
         team_name: "RCB"
     },
     {
         player_id: "ae09f1a7-3a0e-4429-94cc-0eb6933ac292",
         player_name: "AB de Villiers",
+        role: 'wicket keeper',
         team_id: "9f51258e-65e7-4e2a-af50-764c04d50b99",
         team_name: "RCB"
     },
     {
         player_id: "c0a68e6f-40a1-4a2c-8e07-efcdcf01a936",
         player_name: "Yuzvendra Chahal",
+        role: 'bowler',
         team_id: "9f51258e-65e7-4e2a-af50-764c04d50b99",
         team_name: "RCB"
     },
     {
         player_id: "f2f7247c-9c85-4e84-8da1-905c822b7a36",
         player_name: "Glenn Maxwell",
+        role: 'all-rounder',
         team_id: "9f51258e-65e7-4e2a-af50-764c04d50b99",
         team_name: "RCB"
     },
     {
         player_id: "8baf0c05-eb37-490f-9ba2-04b6a9a6d1d5",
         player_name: "Mohammed Siraj",
+        role: 'bowler',
         team_id: "9f51258e-65e7-4e2a-af50-764c04d50b99",
         team_name: "RCB"
     },
     {
         player_id: "ca051703-82ee-44b3-8b4f-96cbcf32e4bf",
         player_name: "Devdutt Padikkal",
+        role: 'batsman',
         team_id: "9f51258e-65e7-4e2a-af50-764c04d50b99",
         team_name: "RCB"
     },
     {
         player_id: "14b67365-8018-4914-bf85-5c774ef18418",
         player_name: "Washington Sundar",
+        role: 'all-rounder',
         team_id: "9f51258e-65e7-4e2a-af50-764c04d50b99",
         team_name: "RCB"
     },
     {
         player_id: "c2c80463-992b-4d91-91a2-8499f101c74c",
         player_name: "Kyle Jamieson",
+        role: 'bowler',
         team_id: "9f51258e-65e7-4e2a-af50-764c04d50b99",
         team_name: "RCB"
     },
     {
         player_id: "34e2c499-e1e4-4c1e-9e19-4ec68a950430",
         player_name: "Navdeep Saini",
+        role: 'bowler',
         team_id: "9f51258e-65e7-4e2a-af50-764c04d50b99",
         team_name: "RCB"
     },
     {
         player_id: "76133a57-01b1-4a54-9a2b-c0620a719d8c",
         player_name: "Dan Christian",
+        role: 'bowler',
         team_id: "9f51258e-65e7-4e2a-af50-764c04d50b99",
         team_name: "RCB"
     },
     {
         player_id: "f16f9f8e-eb33-4777-a7cf-61a554c42e3e",
         player_name: "Sachin Baby",
+        role: 'batsman',
         team_id: "9f51258e-65e7-4e2a-af50-764c04d50b99",
         team_name: "RCB"
     },
     {
         player_id: "a9e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "MS Dhoni",
+        role: 'wicket keeper',
         team_id: "af958d8a-9e01-4f0b-8bc7-525b96f26041",
         team_name: "CSK"
     },
     {
         player_id: "f3bd16f5-8bd4-48e7-9a7f-3e4ee5a7dd90",
         player_name: "Suresh Raina",
+        role: 'batsman',
         team_id: "af958d8a-9e01-4f0b-8bc7-525b96f26041",
         team_name: "CSK"
     },
     {
         player_id: "1e5a9d3e-0382-49a4-9f1c-71e011feab98",
         player_name: "Ravindra Jadeja",
+        role: 'all-rounder',
         team_id: "af958d8a-9e01-4f0b-8bc7-525b96f26041",
         team_name: "CSK"
     },
     {
         player_id: "62305132-bf1b-4e86-a5f4-04c01a3ce267",
         player_name: "Deepak Chahar",
+        role: 'bowler',
         team_id: "af958d8a-9e01-4f0b-8bc7-525b96f26041",
         team_name: "CSK"
     },
     {
         player_id: "7f2a3e1d-5c49-4bd3-8c12-3c5b4d836fa0",
         player_name: "Faf du Plessis",
+        role: 'batsman',
         team_id: "af958d8a-9e01-4f0b-8bc7-525b96f26041",
         team_name: "CSK"
     },
     {
         player_id: "b740c722-b2e5-4c7e-82a6-ee95d75dbb18",
         player_name: "Ambati Rayudu",
+        role: 'batsman',
         team_id: "af958d8a-9e01-4f0b-8bc7-525b96f26041",
         team_name: "CSK"
     },
     {
         player_id: "d15c2df5-32d2-4fc8-8a05-b2e1c6460f55",
         player_name: "Sam Curran",
+        role: 'all-rounder',
         team_id: "af958d8a-9e01-4f0b-8bc7-525b96f26041",
         team_name: "CSK"
     },
     {
         player_id: "29537b41-cf24-4bae-a1db-6f97c1da1a5b",
         player_name: "Dwayne Bravo",
+        role: 'all-rounder',
         team_id: "af958d8a-9e01-4f0b-8bc7-525b96f26041",
         team_name: "CSK"
     },
     {
         player_id: "11e0d95e-d9b4-4688-ae10-21c8e9ad7b2c",
         player_name: "Imran Tahir",
+        role: 'bowler',
         team_id: "af958d8a-9e01-4f0b-8bc7-525b96f26041",
         team_name: "CSK"
     },
     {
         player_id: "25a032c9-79a7-4a0f-a1c2-9eab0400c9b4",
         player_name: "Shardul Thakur",
+        role: 'bowler',
         team_id: "af958d8a-9e01-4f0b-8bc7-525b96f26041",
         team_name: "CSK"
     },
     {
         player_id: "7c91674d-8c2b-4a93-a94f-b4a3e5fe4d0a",
         player_name: "Ruturaj Gaikwad",
+        role: 'batsman',
         team_id: "af958d8a-9e01-4f0b-8bc7-525b96f26041",
         team_name: "CSK"
     },
     {
         player_id: "b9e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Rohit Sharma",
+        role: 'batsman',
         team_id: "c29ea6da-8f60-49c4-b508-47761b7fca42",
         team_name: "MI"
     },
     {
         player_id: "c9e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Jasprit Bumrah",
+        role: 'bowler',
         team_id: "c29ea6da-8f60-49c4-b508-47761b7fca42",
         team_name: "MI"
     },
     {
         player_id: "d9e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Hardik Pandya",
+        role: 'all-rounder',
         team_id: "c29ea6da-8f60-49c4-b508-47761b7fca42",
         team_name: "MI"
     },
     {
         player_id: "e9e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Kieron Pollard",
+        role: 'all-rounder',
         team_id: "c29ea6da-8f60-49c4-b508-47761b7fca42",
         team_name: "MI"
     },
     {
         player_id: "f9e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Quinton de Kock",
+        role: 'wicket keeper',
         team_id: "c29ea6da-8f60-49c4-b508-47761b7fca42",
         team_name: "MI"
     },
     {
         player_id: "09e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Suryakumar Yadav",
+        role: 'batsman',
         team_id: "c29ea6da-8f60-49c4-b508-47761b7fca42",
         team_name: "MI"
     },
     {
         player_id: "19e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Ishan Kishan",
+        role: 'wicket keeper',
         team_id: "c29ea6da-8f60-49c4-b508-47761b7fca42",
         team_name: "MI"
     },
     {
         player_id: "29e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Trent Boult",
+        role: 'bowler',
         team_id: "c29ea6da-8f60-49c4-b508-47761b7fca42",
         team_name: "MI"
     },
     {
         player_id: "39e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Krunal Pandya",
+        role: 'all-rounder',
         team_id: "c29ea6da-8f60-49c4-b508-47761b7fca42",
         team_name: "MI"
     },
     {
         player_id: "39e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Jayant Yadav",
+        role: 'bowler',
         team_id: "c29ea6da-8f60-49c4-b508-47761b7fca42",
         team_name: "MI"
     },
     {
         player_id: "39e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Adam Milne",
+        role: 'bowler',
         team_id: "c29ea6da-8f60-49c4-b508-47761b7fca42",
         team_name: "MI"
     },
     {
         player_id: "59e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Eoin Morgan",
+        role: 'batsman',
         team_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
         team_name: "KKR"
     },
     {
         player_id: "69e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Andre Russell",
+        role: 'all-rounder',
         team_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
         team_name: "KKR"
     },
     {
         player_id: "79e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Pat Cummins",
+        role: 'all-rounder',
         team_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
         team_name: "KKR"
     },
     {
         player_id: "89e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Shubman Gill",
+        role: 'batsman',
         team_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
         team_name: "KKR"
     },
     {
         player_id: "99e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Sunil Narine",
+        role: 'all-rounder',
         team_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
         team_name: "KKR"
     },
     {
         player_id: "a0e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Dinesh Karthik",
+        role: 'wicket keeper',
         team_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
         team_name: "KKR"
     },
     {
         player_id: "b0e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Varun Chakravarthy",
+        role: 'bowler',
         team_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
         team_name: "KKR"
     },
     {
         player_id: "c0e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Lockie Ferguson",
+        role: 'bowler',
         team_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
         team_name: "KKR"
     },
     {
         player_id: "d0e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Nitish Rana",
+        role: 'batsman',
         team_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
         team_name: "KKR"
     },
     {
         player_id: "e0e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Rahul Tripathi",
+        role: 'batsman',
         team_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
         team_name: "KKR"
     },
     {
         player_id: "f0e5c2ef-4e88-4e74-9aeb-145d55b7b0c9",
         player_name: "Prasidh Krishna",
+        role: 'bowler',
         team_id: "eb3100bf-ecc5-4c17-9a14-eeeb12b4d5a3",
         team_name: "KKR"
     },
     {
         player_id: "0240551f-f4d9-4379-82e4-d7dacd3a6f04",
         player_name: "Kane Williamson",
+        role: 'batsman',
         team_id: "d13c5f5b-bfe9-41ef-8be4-bbe4976b1c33",
         team_name: "SRH"
     },
     {
         player_id: "360b08df-fb33-4116-9d29-b3e52c8bbe3a",
         player_name: "David Warner",
+        role: 'batsman',
         team_id: "d13c5f5b-bfe9-41ef-8be4-bbe4976b1c33",
         team_name: "SRH"
     },
     {
         player_id: "48ddcbad-d32e-4faf-abbe-31aad1af9bba",
         player_name: "Rashid Khan",
+        role: 'bowler',
         team_id: "d13c5f5b-bfe9-41ef-8be4-bbe4976b1c33",
         team_name: "SRH"
     },
     {
         player_id: "a25e80ea-466c-48d5-ae00-ad56cdf31173",
         player_name: "Bhuvneshwar Kumar",
+        role: 'bowler',
         team_id: "d13c5f5b-bfe9-41ef-8be4-bbe4976b1c33",
         team_name: "SRH"
     },
     {
         player_id: "20b85839-8fa1-4545-bdc4-b9f437a82a8a",
         player_name: "Jonny Bairstow",
+        role: 'wicket keeper',
         team_id: "d13c5f5b-bfe9-41ef-8be4-bbe4976b1c33",
         team_name: "SRH"
     },
     {
         player_id: "b176ae68-c4fe-4235-8415-f55968538643",
         player_name: "Manish Pandey",
+        role: 'batsman',
         team_id: "d13c5f5b-bfe9-41ef-8be4-bbe4976b1c33",
         team_name: "SRH"
     },
     {
         player_id: "b19d2b60-918a-49f4-bec6-9fc291ab1862",
         player_name: "Wriddhiman Saha",
+        role: 'batsman',
         team_id: "d13c5f5b-bfe9-41ef-8be4-bbe4976b1c33",
         team_name: "SRH"
     },
     {
         player_id: "8c39a34d-8945-4abe-a949-5f2efd56fb20",
         player_name: "Mohammad Nabi",
+        role: 'all-rounder',
         team_id: "d13c5f5b-bfe9-41ef-8be4-bbe4976b1c33",
         team_name: "SRH"
     },
     {
         player_id: "6999c51a-1355-4a1c-b673-a9dff4caf8a5",
         player_name: "Sandeep Sharma",
+        role: 'bowler',
         team_id: "d13c5f5b-bfe9-41ef-8be4-bbe4976b1c33",
         team_name: "SRH"
     },
     {
         player_id: "d42660fc-bffa-4d23-89d5-54c95d19a9a4",
         player_name: "T Natarajan",
+        role: 'bowler',
         team_id: "d13c5f5b-bfe9-41ef-8be4-bbe4976b1c33",
         team_name: "SRH"
     },
     {
         player_id: "dc065632-514d-4c5d-a05c-a1829b07051f",
         player_name: "Abdul Samad",
+        role: 'batsman',
         team_id: "d13c5f5b-bfe9-41ef-8be4-bbe4976b1c33",
         team_name: "SRH"
     },
     {
         player_id: "9099c1a2-bcea-424b-8b5b-0c396d5f984f",
         player_name: "Rishabh Pant",
+        role: 'wicket keeper',
         team_id: "6c9c3bd7-9015-475f-ae7b-b6a00f66b38c",
         team_name: "DC"
     },
     {
         player_id: "b5d86802-5539-4fac-ab7f-ce5277258ecf",
         player_name: "Shikhar Dhawan",
+        role: 'batsman',
         team_id: "6c9c3bd7-9015-475f-ae7b-b6a00f66b38c",
         team_name: "DC"
     },
     {
         player_id: "d6501f10-f831-4c28-8549-42085a9b5bf3",
         player_name: "Kagiso Rabada",
+        role: 'bowler',
         team_id: "6c9c3bd7-9015-475f-ae7b-b6a00f66b38c",
         team_name: "DC"
     },
     {
         player_id: "724260ca-4b76-451b-84ac-4669c99f59f8",
         player_name: "Prithvi Shaw",
+        role: 'batsman',
         team_id: "6c9c3bd7-9015-475f-ae7b-b6a00f66b38c",
         team_name: "DC"
     },
     {
         player_id: "5f3f098d-cc63-48f0-857c-d3fb98adb753",
         player_name: "Shimron Hetmyer",
+        role: 'batsman',
         team_id: "6c9c3bd7-9015-475f-ae7b-b6a00f66b38c",
         team_name: "DC"
     },
     {
         player_id: "ef9d2178-b259-44b9-b848-c28c89be4e0f",
         player_name: "Marcus Stoinis",
+        role: 'all-rounder',
         team_id: "6c9c3bd7-9015-475f-ae7b-b6a00f66b38c",
         team_name: "DC"
     },
     {
         player_id: "18aacf45-6b15-4760-9b6e-ae309ce2a2d8",
         player_name: "Steven Smith",
+        role: 'batsman',
         team_id: "6c9c3bd7-9015-475f-ae7b-b6a00f66b38c",
         team_name: "DC"
     },
     {
         player_id: "97f83bec-a9d5-4af0-ad1c-34869cc3737c",
         player_name: "Axar Patel",
+        role: 'all-rounder',
         team_id: "6c9c3bd7-9015-475f-ae7b-b6a00f66b38c",
         team_name: "DC"
     },
     {
         player_id: "62e07612-94ee-4b1d-845e-d319c56578b8",
         player_name: "Amit Mishra",
+        role: 'bowler',
         team_id: "6c9c3bd7-9015-475f-ae7b-b6a00f66b38c",
         team_name: "DC"
     },
     {
         player_id: "21fb64c0-1822-4ffb-955a-e0e7626552ad",
         player_name: "Ishant Sharma",
+        role: 'bowler',
         team_id: "6c9c3bd7-9015-475f-ae7b-b6a00f66b38c",
         team_name: "DC"
     },
     {
         player_id: "f743bf07-d528-449c-8c2c-d370ba98ef3e",
         player_name: "Chris Woakes",
+        role: 'bowler',
         team_id: "6c9c3bd7-9015-475f-ae7b-b6a00f66b38c",
         team_name: "DC"
     },
     {
         player_id: "903a5031-eab7-4aaf-beeb-03965e5fdc01",
         player_name: "KL Rahul",
+        role: 'wicket keeper',
         team_id: "841a390c-53a7-4f32-97d5-dcfd743d3d5b",
         team_name: "PBKS"
     },
     {
         player_id: "23b699ca-4b2d-457b-89eb-2196bf3de58e",
         player_name: "Chris Gayle",
+        role: 'batsman',
         team_id: "841a390c-53a7-4f32-97d5-dcfd743d3d5b",
         team_name: "PBKS"
     },
     {
         player_id: "b4e0f9d0-1ff7-4639-b962-75a49b6b4915",
         player_name: "Mayank Agarwal",
+        role: 'batsman',
         team_id: "841a390c-53a7-4f32-97d5-dcfd743d3d5b",
         team_name: "PBKS"
     },
     {
         player_id: "33791625-9db9-45e4-8706-204bbfbaaf35",
         player_name: "Mohammed Shami",
+        role: 'bowler',
         team_id: "841a390c-53a7-4f32-97d5-dcfd743d3d5b",
         team_name: "PBKS"
     },
     {
         player_id: "efd3f6ba-284b-42e4-a338-bf149e3fd2cc",
         player_name: "Nicholas Pooran",
+        role: 'wicket keeper',
         team_id: "841a390c-53a7-4f32-97d5-dcfd743d3d5b",
         team_name: "PBKS"
     },
     {
         player_id: "8fe10bc1-0a92-4779-bb24-445fb68f2ae4",
         player_name: "Dawid Malan",
+        role: 'batsman',
         team_id: "841a390c-53a7-4f32-97d5-dcfd743d3d5b",
         team_name: "PBKS"
     },
     {
         player_id: "6db65ec0-ea13-4077-9330-5b51b59dff5c",
         player_name: "Deepak Hooda",
+        role: 'batsman',
         team_id: "841a390c-53a7-4f32-97d5-dcfd743d3d5b",
         team_name: "PBKS"
     },
     {
         player_id: "bc8c65b2-ffd9-411e-a765-0c2475fa0161",
         player_name: "Arshdeep Singh",
+        role: 'bowler',
         team_id: "841a390c-53a7-4f32-97d5-dcfd743d3d5b",
         team_name: "PBKS"
     },
     {
         player_id: "95f968b6-57ac-4344-b1ef-c69fa823ba33",
         player_name: "Ravi Bishnoi",
+        role: 'bowler',
         team_id: "841a390c-53a7-4f32-97d5-dcfd743d3d5b",
         team_name: "PBKS"
     },
     {
         player_id: "ebc3bba8-803d-4973-a913-b913129c725d",
         player_name: "Mandeep Singh",
+        role: 'batsman',
         team_id: "841a390c-53a7-4f32-97d5-dcfd743d3d5b",
         team_name: "PBKS"
     },
     {
         player_id: "74ac6046-02f1-473b-a395-ab77fce0a2ea",
         player_name: "Fabian Allen",
+        role: 'batsman',
         team_id: "841a390c-53a7-4f32-97d5-dcfd743d3d5b",
         team_name: "PBKS"
     },
     {
         player_id: "38bafb33-a290-4774-a3c0-b6178327996d",
         player_name: "Sanju Samson",
+        role: 'wicket keeper',
         team_id: "5a6473e0-4de1-46a1-845a-4d2a55a256ad",
         team_name: "RR"
     },
     {
         player_id: "ce2ca11b-9808-493b-9f30-5382636a97c6",
         player_name: "Jos Buttler",
+        role: 'wicket keeper',
         team_id: "5a6473e0-4de1-46a1-845a-4d2a55a256ad",
         team_name: "RR"
     },
     {
         player_id: "7bf508ee-7abb-4d0d-b1c9-fd02ab60b5a4",
         player_name: "Ben Stokes",
+        role: 'all-rounder',
         team_id: "5a6473e0-4de1-46a1-845a-4d2a55a256ad",
         team_name: "RR"
     },
     {
         player_id: "561dc03f-1c97-446c-9ba4-61ea498ada11",
         player_name: "Jofra Archer",
+        role: 'bowler',
         team_id: "5a6473e0-4de1-46a1-845a-4d2a55a256ad",
         team_name: "RR"
     },
     {
         player_id: "1de4e9bd-8e8e-4792-a5e1-2bef2a2e15b0",
         player_name: "Riyan Parag",
+        role: 'batsman',
         team_id: "5a6473e0-4de1-46a1-845a-4d2a55a256ad",
         team_name: "RR"
     },
     {
         player_id: "36f06b64-c584-479c-b261-8f5668499c8e",
         player_name: "Chris Morris",
+        role: 'all-rounder',
         team_id: "5a6473e0-4de1-46a1-845a-4d2a55a256ad",
         team_name: "RR"
     },
     {
         player_id: "7bb59ff0-91db-4803-96e8-c12edbfaec7a",
         player_name: "David Miller",
+        role: 'batsman',
         team_id: "5a6473e0-4de1-46a1-845a-4d2a55a256ad",
         team_name: "RR"
     },
     {
         player_id: "f6ae6a70-6db2-40c8-8ec4-312078f05111",
         player_name: "Shreyas Gopal",
+        role: 'bowler',
         team_id: "5a6473e0-4de1-46a1-845a-4d2a55a256ad",
         team_name: "RR"
     },
     {
         player_id: "ee5e5854-0261-481c-8b87-c463b6bbee75",
         player_name: "Mustafizur Rahman",
+        role: 'bowler',
         team_id: "5a6473e0-4de1-46a1-845a-4d2a55a256ad",
         team_name: "RR"
     },
     {
         player_id: "25813010-f843-461d-b4b7-5712ce7c621e",
         player_name: "Jaydev Unadkat",
+        role: 'bowler',
         team_id: "5a6473e0-4de1-46a1-845a-4d2a55a256ad",
         team_name: "RR"
     },
     {
         player_id: "ffea7c52-1ffb-4aeb-a52a-983af431e9de",
         player_name: "Yashasvi Jaiswal",
+        role: 'batsman',
         team_id: "5a6473e0-4de1-46a1-845a-4d2a55a256ad",
         team_name: "RR"
     }

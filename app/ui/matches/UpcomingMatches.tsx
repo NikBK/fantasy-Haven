@@ -1,6 +1,7 @@
 import { fetchUpcomingMatches } from "@/app/lib/data";
 import { upcomingMatchType } from "@/app/lib/typeDefinition";
 import { formatCurrency, formatDateToLocal } from "@/app/lib/utils";
+import Link from "next/link";
 
 // const matches = [
 //     {
@@ -58,7 +59,7 @@ const Card = ({ match }: { match: upcomingMatchType }) => {
             <div className="px-4 py-2 max-xs:px-2 max-xs:text-sm text-white">{match.team1_name} vs {match.team2_name}</div>
             <div className="px-4 py-2 max-xs:px-2 max-xs:text-sm text-white">{formatDateToLocal(match.time, dateOption)}</div>
             <div className="px-4 py-2 max-xs:px-2 max-xs:text-sm text-white">{formatCurrency(match.amount)}</div>
-            <button className="px-2 py-2 text-xs sm:text-sm text-white bg-blue-700 rounded-full">Create Team</button>
+            <Link href={'upcoming/' + match.id + '/create-team'} className="px-2 py-2 text-xs sm:text-sm text-white bg-blue-700 rounded-full">Create Team</Link>
             <div className="px-4 py-2 max-xs:px-2 max-xs:text-sm text-white bg-blue-400 rounded-full">{match.slots} slots</div>
             <button className="px-2 py-2 text-xs sm:text-sm text-white bg-green-500 rounded-full">Join Game</button>
         </div>

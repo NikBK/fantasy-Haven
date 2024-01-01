@@ -1,5 +1,5 @@
 import { sql } from "@vercel/postgres";
-import { currentBalanceType, earningsHistoryType, earningsType, liveMatchType, pastMatchType, transactionHistoryType, upcomingMatchType, userType } from "@/app/lib/typeDefinition";
+import { currentBalanceType, earningsHistoryType, earningsType, liveMatchType, pastMatchType, playersDetailsType, transactionHistoryType, upcomingMatchType, userType } from "@/app/lib/typeDefinition";
 import { unstable_noStore as noStore } from 'next/cache';
 import { getServerSession } from "next-auth";
 
@@ -217,7 +217,7 @@ export async function fetchPastMatches(): Promise<pastMatchType[]> {
         return matches.rows;
     } catch (error) {
         console.error('Failed to fetch past matches:', error);
-        throw new Error('Failed to fetch past matches. ' + error);
+        throw new Error('Failed to fetch past matches.');
     }
 }
 
