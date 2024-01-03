@@ -1,5 +1,5 @@
 const { db } = require("@vercel/postgres");
-const { users, transactions, earnings, teams, players, matches } = require("./placeholderData.ts");
+const { users, transactions, earnings, teams, players, matches, usersTeams } = require("./placeholderData.ts");
 const bcrypt = require('bcrypt');
 
 function generateUsername(name) {
@@ -136,7 +136,7 @@ async function seedTeams(client) {
             CREATE TABLE IF NOT EXISTS fantasyteams (
                 team_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
                 team_name VARCHAR(255) NOT NULL,
-                players_list JSONB[]
+                players_list TEXT
             );
         `;
 
@@ -145,9 +145,11 @@ async function seedTeams(client) {
         // Insert data into the "fantasyteams" table
         const insertedTeams = await Promise.all(
             teams.map(async (team) => {
+                const playersList = JSON.stringify(team.players_list);
+
                 return client.sql`
                     INSERT INTO fantasyteams (team_id, team_name, players_list)
-                    VALUES (${team.team_id}, ${team.team_name}, ${team.players_list})
+                    VALUES (${team.team_id}, ${team.team_name}, ${playersList})
                     ON CONFLICT (team_id) DO NOTHING;
                 `;
             })
@@ -249,6 +251,46 @@ async function seedMatches(client) {
     }
 }
 
+async function seedUserTeams(client) {
+    try {
+        await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+        // Create the "userteams" table if it doesn't exist
+        const createTable = await client.sql`
+            CREATE TABLE IF NOT EXISTS fantasyuserteams (
+                team_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+                user_id UUID NOT NULL,
+                match_id UUID NOT NULL,
+                team TEXT NOT NULL
+            );
+        `;
+
+        console.log(`Created "userteams" table`);
+
+        // Insert data into the "fantasyuserteams" table
+        const insertedUsersTeams = await Promise.all(
+            usersTeams.map(async (user) => {
+                const userTeam = JSON.stringify(user.team);
+
+                return client.sql`
+                    INSERT INTO fantasyuserteams (team_id, user_id, match_id, team)
+                    VALUES (${user.team_id}, ${user.user_id}, ${user.match_id}, ${userTeam})
+                    ON CONFLICT (team_id) DO NOTHING;
+                `;
+            })
+        )
+
+        console.log(`Seeded ${insertedUsersTeams.length} users teams`);
+
+        return {
+            createTable,
+            users: insertedUsersTeams,
+        };
+    } catch (error) {
+        console.error('Error seeding users teams:', error);
+        throw error;
+    }
+}
+
 async function dropTables(client) {
     console.log("dropping 'users' tables");
     const dropUsers = await client.sql`
@@ -296,6 +338,7 @@ async function main() {
     await seedTeams(client);
     await seedPlayers(client);
     await seedMatches(client);
+    await seedUserTeams(client);
 
     console.log("Completed seeding process");
 

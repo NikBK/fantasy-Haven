@@ -1076,6 +1076,26 @@ const matches = [
     // Add more matches as needed
 ];
 
+const usersTeams = [
+    {
+        team_id: 'c95fa14a-e3a2-471d-aee4-30c2a35da650',
+        user_id: '410544b2-4001-4271-9855-fec4b6a6442a',
+        match_id: '038d430b-d0a0-47a2-8aa9-7abe7f9d3341',
+        team: [
+            { "player_id": "a9e5c2ef-4e88-4e74-9aeb-145d55b7b0c9", "player_name": "MS Dhoni", "role": "wicket keeper", "team_name": "CSK" },
+            { "player_id": "9099c1a2-bcea-424b-8b5b-0c396d5f984f", "player_name": "Rishabh Pant", "role": "wicket keeper", "team_name": "DC" },
+            { "player_id": "f3bd16f5-8bd4-48e7-9a7f-3e4ee5a7dd90", "player_name": "Suresh Raina", "role": "batsman", "team_name": "CSK" },
+            { "player_id": "7f2a3e1d-5c49-4bd3-8c12-3c5b4d836fa0", "player_name": "Faf du Plessis", "role": "batsman", "team_name": "CSK" },
+            { "player_id": "b740c722-b2e5-4c7e-82a6-ee95d75dbb18", "player_name": "Ambati Rayudu", "role": "batsman", "team_name": "CSK" },
+            { "player_id": "7c91674d-8c2b-4a93-a94f-b4a3e5fe4d0a", "player_name": "Ruturaj Gaikwad", "role": "batsman", "team_name": "CSK" },
+            { "player_id": "b5d86802-5539-4fac-ab7f-ce5277258ecf", "player_name": "Shikhar Dhawan", "role": "batsman", "team_name": "DC" },
+            { "player_id": "11e0d95e-d9b4-4688-ae10-21c8e9ad7b2c", "player_name": "Imran Tahir", "role": "bowler", "team_name": "CSK" },
+            { "player_id": "29537b41-cf24-4bae-a1db-6f97c1da1a5b", "player_name": "Dwayne Bravo", "role": "all-rounder", "team_name": "CSK" },
+            { "player_id": "62305132-bf1b-4e86-a5f4-04c01a3ce267", "player_name": "Deepak Chahar", "role": "bowler", "team_name": "CSK" },
+            { "player_id": "ef9d2178-b259-44b9-b848-c28c89be4e0f", "player_name": "Marcus Stoinis", "role": "all-rounder", "team_name": "DC" }
+        ]
+    },
+]
 
 module.exports = {
     users,
@@ -1083,7 +1103,8 @@ module.exports = {
     earnings,
     teams,
     players,
-    matches
+    matches,
+    usersTeams
 }
 
 const teamsArray = [

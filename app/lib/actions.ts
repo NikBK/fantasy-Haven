@@ -2,6 +2,8 @@
 
 import { sql } from "@vercel/postgres";
 import { createUserType, playersDetailsType } from "@/app/lib/typeDefinition";
+import { getServerSession } from "next-auth";
+import { getUserByEmail } from "@/app/lib/data";
 
 export async function createUser({ name, email, hashedPassword, userName }: createUserType) {
     try {
@@ -58,5 +60,31 @@ export async function fetchPlayersDetails(match_id: string): Promise<playersDeta
     } catch (error) {
         console.error('Failed to fetch players info:', error);
         throw new Error('Failed to fetch players info.');
+    }
+}
+
+
+export async function createUserteam(match_id: string, team: playersDetailsType[]) {
+    try {
+        const userTeam = JSON.stringify(team);
+        // console.log({ userTeam });
+
+        const session = await getServerSession();
+        // console.log(session?.user)
+        const userEmail = session?.user?.email || '';
+        const user = await getUserByEmail(userEmail);
+        // console.log(user);
+
+        const teamDetail = await sql`
+            INSERT INTO fantasyuserteams (user_id, match_id, team)
+            VALUES (${user.id}, ${match_id}, ${userTeam})
+            ON CONFLICT (team_id) DO NOTHING;
+        `;
+        // console.log(teamDetail.rows);
+
+        return teamDetail.rows;
+    } catch (error) {
+        console.error('Failed to create user team:', error);
+        throw new Error('Failed to create user team.');
     }
 }
