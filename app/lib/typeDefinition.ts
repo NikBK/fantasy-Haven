@@ -76,3 +76,15 @@ export type captainType = {
     player_id: string;
     player_name: string;
 }
+
+export type userTeamType = {
+    team_id: string;
+    team: string;
+}
+
+export type teamPlayerType = {
+    player_id: string;
+    player_name: string;
+    role: "wicket keeper" | 'batsman' | 'all-rounder' | 'bowler';
+    team_name: string;
+}

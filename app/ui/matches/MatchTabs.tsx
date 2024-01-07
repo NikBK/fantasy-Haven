@@ -18,11 +18,13 @@ const matchTabs = [
     }
 ]
 
+const paths = ['/matches/upcoming', '/matches/live', '/matches/past']
+
 const MatchTabs = () => {
     const pathname = usePathname();
 
     return (
-        <div className='grid grid-cols-3 uppercase sticky top-0 bg-[#f0f8ff]'>
+        <div className={`grid grid-cols-3 uppercase sticky top-0 bg-[#f0f8ff] z-10 ${paths.includes(pathname) ? '' : 'hidden'}`}>
             {matchTabs.map((tab: { title: string, link: string }, index: number) =>
                 <Link
                     href={tab.link}

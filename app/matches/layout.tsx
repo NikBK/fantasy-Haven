@@ -6,7 +6,7 @@ const layout = ({ children }: { children: ReactNode }) => {
     return (
         <div className='flex flex-col w-full'>
             <MatchTabs />
-            <div className='py-2 flex flex-col items-center w-full lg:p-8'>
+            <div className='py-2 flex flex-col items-center w-full relative'>
                 {children}
             </div>
         </div>

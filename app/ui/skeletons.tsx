@@ -292,3 +292,74 @@ export function EarningsTableSkeleton() {
         </div>
     );
 }
+
+export function MakeMyTeamSkeleton() {
+    return (
+        <div className="mt-6 flow-root">
+            <div className="inline-block min-w-full align-middle">
+                <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
+                    <table className="min-w-full text-gray-900 md:table">
+                        <thead className="rounded-lg text-left text-sm font-normal">
+                            <tr>
+                                <th scope="col" className="py-5 px-4 lg:px-6 font-medium">
+                                    Player Name
+                                </th>
+                                <th scope="col" className="py-5 px-3 lg:px-5 font-medium">
+                                    Role
+                                </th>
+                                <th scope="col" className="py-5 px-3 lg:px-5 font-medium">
+                                    Team
+                                </th>
+                                <th scope="col" className="py-5 px-3 lg:px-5 font-medium">
+                                    Power
+                                </th>
+                                <th scope="col" className="py-5 px-3 lg:px-5 font-medium">
+                                    Add/Remove
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody className="bg-white">
+                            {/* Render rows for each player type */}
+                            <RenderTableRowsSkeleton />
+                            <RenderTableRowsSkeleton />
+                            <RenderTableRowsSkeleton />
+                            <RenderTableRowsSkeleton />
+                            <RenderTableRowsSkeleton />
+                            <RenderTableRowsSkeleton />
+                        </tbody>
+                    </table>
+
+                    <div className="mt-6 mb-8 flex justify-between">
+                        <button className="bg-green-500 text-white px-4 py-2 rounded">Save Team</button>
+                        <button className="bg-purple-500 text-white px-4 py-2 rounded">Join Contest</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export function RenderTableRowsSkeleton() {
+    return (
+        <tr className="animate-pulse w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
+            <td className="whitespace-nowrap py-3 px-4 lg:px-6"><div className="h-8 w-24 bg-gray-200 rounded mb-1"></div></td>
+            <td className="whitespace-nowrap py-3 px-3 lg:px-5 capitalize"><div className="h-8 w-16 bg-gray-200 rounded mb-1"></div></td>
+            <td className="whitespace-nowrap py-3 px-3 lg:px-5 capitalize"><div className="h-8 w-12 bg-gray-200 rounded mb-1"></div></td>
+            <td className="whitespace-nowrap py-3 px-3 lg:px-5 flex flex-row items-center justify-center">
+                <span className='flex items-center justify-center  text-xs rounded-full h-7 w-7'>
+                    <div className="h-full w-full bg-gray-200 rounded-full mb-1"></div>
+                </span>
+                <span className="px-1">/</span>
+                <span className='flex items-center justify-center  text-xs rounded-full h-7 w-7'>
+                    <div className="h-full w-full bg-gray-200 rounded-full mb-1"></div>
+                </span>
+            </td>
+            <td className="whitespace-nowrap py-3 px-3 lg:px-5 text-center">
+                <button className="w-8 h-8 rounded-full">
+                    <div className='w-full h-full rounded-full bg-gray-200'></div>
+                </button>
+            </td>
+        </tr>
+    )
+}

@@ -1,5 +1,5 @@
 import { sql } from "@vercel/postgres";
-import { currentBalanceType, earningsHistoryType, earningsType, liveMatchType, pastMatchType, playersDetailsType, transactionHistoryType, upcomingMatchType, userType } from "@/app/lib/typeDefinition";
+import { currentBalanceType, earningsHistoryType, earningsType, liveMatchType, pastMatchType, playersDetailsType, transactionHistoryType, upcomingMatchType, userTeamType, userType } from "@/app/lib/typeDefinition";
 import { unstable_noStore as noStore } from 'next/cache';
 import { getServerSession } from "next-auth";
 
@@ -244,5 +244,30 @@ export async function fetchLiveMatches(): Promise<liveMatchType[]> {
     } catch (error) {
         console.error('Failed to fetch live matches:', error);
         throw new Error('Failed to fetch live matches.');
+    }
+}
+
+
+
+// FETCH USER TEAM
+export async function fetchUserTeam(match_id: string): Promise<userTeamType> {
+    noStore();
+
+    try {
+        const session = await getServerSession();
+        const userEmail = session?.user?.email || '';
+        const user = await getUserByEmail(userEmail);
+
+        const userTeam = await sql<userTeamType>`
+            SELECT team_id, team FROM fantasyuserteams
+            WHERE user_id=${user?.id}
+            AND match_id=${match_id}
+        `;
+        // console.log(userTeam.rows[0]);
+
+        return userTeam.rows[0];
+    } catch (error) {
+        console.error('Failed to fetch userTeam:', error);
+        throw new Error('Failed to fetch userTeam.');
     }
 }

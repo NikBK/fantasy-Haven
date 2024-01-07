@@ -67,13 +67,10 @@ export async function fetchPlayersDetails(match_id: string): Promise<playersDeta
 export async function createUserteam(match_id: string, team: playersDetailsType[]) {
     try {
         const userTeam = JSON.stringify(team);
-        // console.log({ userTeam });
 
         const session = await getServerSession();
-        // console.log(session?.user)
         const userEmail = session?.user?.email || '';
         const user = await getUserByEmail(userEmail);
-        // console.log(user);
 
         const teamDetail = await sql`
             INSERT INTO fantasyuserteams (user_id, match_id, team)
