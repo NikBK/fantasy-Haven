@@ -16,7 +16,8 @@ async function seedUsers(client) {
                 name VARCHAR(255) NOT NULL,
                 email TEXT NOT NULL UNIQUE,
                 password TEXT NOT NULL,
-                username VARCHAR(50)
+                username VARCHAR(50),
+                role VARCHAR(255) DEFAULT 'user'
             );
         `;
 
