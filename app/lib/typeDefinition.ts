@@ -56,6 +56,7 @@ export type userType = {
     email: string;
     password: string;
     username: string;
+    role: string;
 }
 
 export type createUserType = {
