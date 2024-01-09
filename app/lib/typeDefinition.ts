@@ -89,3 +89,15 @@ export type teamPlayerType = {
     role: "wicket keeper" | 'batsman' | 'all-rounder' | 'bowler';
     team_name: string;
 }
+
+export type dashboardDataType = {
+    total_users: number;
+    total_transactions: number;
+}
+
+export type usersType = {
+    id: string;
+    name: string;
+    email: string;
+    username: string;
+}

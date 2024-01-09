@@ -13,6 +13,8 @@ const AdminPage = () => {
             <Suspense fallback={<EarningsCardsSkeleton />}>
                 <CardWrapper />
             </Suspense>
+
+
         </div>
     )
 }

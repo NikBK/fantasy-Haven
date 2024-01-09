@@ -1,46 +1,31 @@
-import { fetchEarningsHistory } from "@/app/lib/data";
-import { earningsHistoryType } from "@/app/lib/typeDefinition";
-import { formatCurrency, formatDateToLocal } from "@/app/lib/utils";
+import { fetchAllUsers } from "@/app/admin/api/data";
+import { usersType } from "@/app/lib/typeDefinition";
+import EditButtons from "@/app/admin/ui/users/EditButtons";
 
-// const earnings = [
-//     {
-//         id: 1,
-//         match: "RCB vs KKR",
-//         amount: 200,
-//         date: Date()
-//     },
-//     {
-//         id: 2,
-//         match: "RR vs CSK",
-//         amount: 50,
-//         date: Date()
-//     },
-// ]
-
-export default async function EarningsTable({
+export default async function UsersTable({
     currentPage,
 }: {
     currentPage: number;
 }) {
-    const earnings: earningsHistoryType[] = await fetchEarningsHistory(currentPage);
+    const users: usersType[] = await fetchAllUsers(currentPage);
 
     return (
-        <div className="mt-6 flow-root">
+        <div className="flow-root">
             <div className="inline-block min-w-full align-middle">
                 <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
                     <div className="md:hidden">
-                        {earnings?.map((invoice) => (
+                        {users?.map((user) => (
                             <div
-                                key={invoice.id}
-                                className="mb-2 w-full rounded-md bg-white p-4 flex justify-between"
+                                key={user.id}
+                                className="mb-2 w-full rounded-md bg-white p-4 flex items-center justify-between"
                             >
                                 <div>
-                                    <p className="text-lg font-medium">{invoice.teams}</p>
-                                    <p className="text-xs">{formatDateToLocal(invoice.date)}</p>
+                                    <p className="text-lg font-medium">{user.name}</p>
+                                    <p className="text-xs">{user.username}</p>
                                 </div>
                                 <div>
-                                    <p className={`text-lg font-medium ${invoice.result == 'won' ? 'text-green-600' : 'text-red-600'}`}>{formatCurrency(invoice.amount)}</p>
-                                    <p className="text-xs text-right">{invoice.result}</p>
+                                    <p className="text-xs text-right mb-1">{user.email}</p>
+                                    <p className="text-xs text-right flex items-center justify-end mt-1"><EditButtons user_id={user.id} /></p>
                                 </div>
                             </div>
                         ))}
@@ -49,36 +34,36 @@ export default async function EarningsTable({
                         <thead className="rounded-lg text-left text-sm font-normal">
                             <tr>
                                 <th scope="col" className="px-4 py-5 font-medium">
-                                    Date
+                                    Name
                                 </th>
                                 <th scope="col" className="px-3 py-5 font-medium">
-                                    Match
+                                    Username
                                 </th>
                                 <th scope="col" className="px-3 py-5 font-medium">
-                                    Result
+                                    Email
                                 </th>
                                 <th scope="col" className="px-3 py-5 font-medium">
-                                    Amount
+                                    Edit
                                 </th>
                             </tr>
                         </thead>
                         <tbody className="bg-white">
-                            {earnings?.map((invoice) => (
+                            {users?.map((user) => (
                                 <tr
-                                    key={invoice.id}
+                                    key={user.id}
                                     className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                                 >
                                     <td className="whitespace-nowrap px-4 py-3">
-                                        {formatDateToLocal(invoice.date)}
+                                        {user.name}
                                     </td>
                                     <td className="whitespace-nowrap px-3 py-3">
-                                        {invoice.teams}
+                                        {user.username}
                                     </td>
                                     <td className="whitespace-nowrap px-3 py-3 lowercase">
-                                        {invoice.result}
+                                        {user.email}
                                     </td>
-                                    <td className={`whitespace-nowrap px-3 py-3 ${invoice.result == 'won' ? 'text-green-600' : 'text-red-600'}`}>
-                                        {formatCurrency(invoice.amount)}
+                                    <td className="whitespace-nowrap px-3 py-3 flex items-center">
+                                        <EditButtons user_id={user.id} />
                                     </td>
                                 </tr>
                             ))}

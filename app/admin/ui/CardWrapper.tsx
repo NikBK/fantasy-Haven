@@ -1,12 +1,8 @@
 import { formatCurrency } from "@/app/lib/utils";
 import { lusitana } from "@/app/ui/fonts";
-import {
-    UserGroupIcon,
-    CurrencyRupeeIcon,
-    ArrowsRightLeftIcon,
-
-} from '@heroicons/react/24/outline';
+import { UserGroupIcon, CurrencyRupeeIcon, ArrowsRightLeftIcon } from '@heroicons/react/24/outline';
 import { fetchDashboardData } from "@/app/admin/api/data";
+import { dashboardDataType } from "@/app/lib/typeDefinition";
 
 const iconMap = {
     totalUsers: UserGroupIcon,
@@ -17,7 +13,7 @@ const iconMap = {
 const total_income = 300;
 
 export default async function CardWrapper() {
-    const { total_users, total_transactions } = await fetchDashboardData();
+    const { total_users, total_transactions }: dashboardDataType = await fetchDashboardData();
 
     return (
         <div className="grid gap-4 sm:gap-6 sm:grid-cols-3">

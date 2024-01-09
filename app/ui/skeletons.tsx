@@ -363,3 +363,55 @@ export function RenderTableRowsSkeleton() {
         </tr>
     )
 }
+
+
+
+
+
+// ADMIN SKELETONS
+
+export function UsersTableSkeleton() {
+    return (
+        <div className="mt-6 flow-root">
+            <div className="inline-block min-w-full align-middle">
+                <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
+                    <div className="md:hidden">
+                        <EarningsMobileSkeleton />
+                        <EarningsMobileSkeleton />
+                        <EarningsMobileSkeleton />
+                        <EarningsMobileSkeleton />
+                        <EarningsMobileSkeleton />
+                        <EarningsMobileSkeleton />
+                    </div>
+                    <table className="hidden min-w-full text-gray-900 md:table">
+                        <thead className="rounded-lg text-left text-sm font-normal">
+                            <tr>
+                                <th scope="col" className="px-4 py-5 font-medium">
+                                    Name
+                                </th>
+                                <th scope="col" className="px-3 py-5 font-medium">
+                                    Username
+                                </th>
+                                <th scope="col" className="px-3 py-5 font-medium">
+                                    Email
+                                </th>
+                                <th scope="col" className="px-3 py-5 font-medium">
+                                    Edit
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody className="bg-white">
+                            <EarningsTableRowSkeleton />
+                            <EarningsTableRowSkeleton />
+                            <EarningsTableRowSkeleton />
+                            <EarningsTableRowSkeleton />
+                            <EarningsTableRowSkeleton />
+                            <EarningsTableRowSkeleton />
+                            <EarningsTableRowSkeleton />
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    );
+}
