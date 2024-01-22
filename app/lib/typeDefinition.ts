@@ -101,3 +101,20 @@ export type usersType = {
     email: string;
     username: string;
 }
+
+export type TeamType = {
+    id: string;
+    name: string;
+    players_list: JSON;
+}
+
+export type CreateMatchFormType = {
+    team1_id: string;
+    team2_id: string;
+    team1: string;
+    team2: string;
+    time: string;
+    amount: number;
+    slots: number;
+    winningPrize: number;
+}

@@ -1,6 +1,6 @@
 'use server';
 
-import { userType } from "@/app/lib/typeDefinition";
+import { CreateMatchFormType, TeamType, userType } from "@/app/lib/typeDefinition";
 import { sql } from "@vercel/postgres";
 import { unstable_noStore as noStore } from "next/cache";
 
@@ -51,5 +51,34 @@ export const deleteUser = async (user_id: string) => {
     } catch (error) {
         console.log("Error while deleteing the user. ", error);
         throw new Error("Error while deleteing the user. " + error);
+    }
+}
+
+export const getAllTeams = async (): Promise<TeamType[]> => {
+    try {
+        const teams = await sql<TeamType>`
+            SELECT team_id AS id, team_name AS name, players_list FROM fantasyteams;
+        `;
+        // console.log(teams.rows);
+
+        return teams.rows;
+    } catch (error) {
+        console.log("Error while fetching all teams. ", error);
+        throw new Error("Error while fetching all teams. " + error);
+    }
+}
+
+export const createMatch = async (formData: CreateMatchFormType) => {
+    try {
+        const createdMatch = await sql`
+            INSERT INTO fantasymatches (team1_id, team2_id, team1_name, team2_name, match_time, contest_amount, slots, match_type)
+            values (${formData.team1_id}, ${formData.team2_id}, ${formData.team1}, ${formData.team2}, ${formData.time}, ${formData.amount}, ${formData.slots}, 'upcoming')
+        `;
+        // console.log(createdMatch.rows);
+
+        return createdMatch.rows;
+    } catch (error) {
+        console.log("Error while creating a match. ", error);
+        throw new Error("Error while creating a match. " + error);
     }
 }

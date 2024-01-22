@@ -1,12 +1,12 @@
 'use client';
 
-import { HomeIcon, PuzzlePieceIcon, CurrencyRupeeIcon, WalletIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { HomeIcon, PuzzlePieceIcon, CurrencyRupeeIcon, WalletIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 
 const links = [
     { name: 'Home', href: '/admin', icon: HomeIcon },
-    { name: 'Matches', href: '/admin/matches', icon: PuzzlePieceIcon },
+    { name: 'Manage', href: '/admin/manage', icon: PuzzlePieceIcon },
     { name: 'Users', href: '/admin/users', icon: UserGroupIcon },
     { name: 'Earnings', href: '/admin/earnings', icon: CurrencyRupeeIcon },
     { name: 'Wallet', href: '/admin/wallet', icon: WalletIcon },
