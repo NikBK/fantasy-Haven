@@ -118,3 +118,25 @@ export type CreateMatchFormType = {
     slots: number;
     winningPrize: number;
 }
+
+export type PlayerType = {
+    player_id: string;
+    player_name: string;
+    role: string;
+};
+
+export type CreateTeamFormType = {
+    name: string;
+    selectedPlayers: PlayerType[];
+    currentInput: string;
+}
+
+export type UncappedPlayerType = {
+    id: string;
+    name: string;
+    role: string;
+}
+
+export type TeamNameType = {
+    name: string;
+}

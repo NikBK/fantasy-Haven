@@ -40,7 +40,15 @@ const CreateMatchForm = () => {
                     <select
                         className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-blue-500"
                         value={formData.team1}
-                        onChange={e => setFormData({ ...formData, team1: e.target.value, team1_id: e.target.id })}
+                        // onChange={e => setFormData({ ...formData, team1: e.target.value, team1_id: e.target.id })}
+                        onChange={(e) => {
+                            const selectedTeam = teams.find((team) => team.name === e.target.value);
+                            setFormData({
+                                ...formData,
+                                team1: e.target.value,
+                                team1_id: selectedTeam ? selectedTeam.id : "",
+                            });
+                        }}
                         required
                     >
                         <option value="" disabled hidden>
@@ -58,7 +66,15 @@ const CreateMatchForm = () => {
                     <select
                         className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-blue-500"
                         value={formData.team2}
-                        onChange={e => setFormData({ ...formData, team2: e.target.value, team2_id: e.target.id })}
+                        // onChange={e => setFormData({ ...formData, team2: e.target.value, team2_id: e.target.id })}
+                        onChange={(e) => {
+                            const selectedTeam = teams.find((team) => team.name === e.target.value);
+                            setFormData({
+                                ...formData,
+                                team2: e.target.value,
+                                team2_id: selectedTeam ? selectedTeam.id : "",
+                            });
+                        }}
                         required
                     >
                         <option value="" disabled hidden>

@@ -23,7 +23,20 @@ const LoginForm = () => {
         })
 
         if (!response?.error) {
-            router.push("/");
+            // if (response?.url) {
+            //     let redirectUrl = decodeURIComponent(response.url);
+            //     let callbackUrl = redirectUrl.split("callbackUrl=")[1];
+            //     if (callbackUrl) {
+            //         router.push(callbackUrl);
+            //     }
+            //     else {
+            //         router.push(redirectUrl);
+            //     }
+            // }
+            // else {
+            //     router.push('/');
+            // }
+            router.push('/');
             router.refresh();
         }
 
@@ -89,8 +102,24 @@ const LoginForm = () => {
                 <div className="text-sm text-center mt-2">Don't have an Account ? <Link href={'/signup'} className="text-blue-700">signup</Link></div>
 
             </div>
+
+            <TestUser />
         </form>
     )
 }
+
+const TestUser = () => {
+    return (
+        <div className="bg-white p-6 rounded-md shadow-md">
+            <h2 className="text-2xl font-bold mb-4">Test User Information</h2>
+            <p className="text-gray-600 mb-2">
+                <span className="font-bold">Email:</span> tester@gmail.com
+            </p>
+            <p className="text-gray-600">
+                <span className="font-bold">Password:</span> mytest123
+            </p>
+        </div>
+    );
+};
 
 export default LoginForm;

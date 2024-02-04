@@ -136,8 +136,8 @@ async function seedTeams(client) {
         const createTable = await client.sql`
             CREATE TABLE IF NOT EXISTS fantasyteams (
                 team_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-                team_name VARCHAR(255) NOT NULL,
-                players_list TEXT
+                team_name VARCHAR(255) UNIQUE NOT NULL,
+                players_list JSONB
             );
         `;
 
@@ -203,6 +203,43 @@ async function seedPlayers(client) {
         };
     } catch (error) {
         console.error('Error seeding players:', error);
+        throw error;
+    }
+}
+
+async function seedUncappedPlayers(client) {
+    try {
+        await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+        // Create the "uncapped players" table if it doesn't exist
+        const createTable = await client.sql`
+            CREATE TABLE IF NOT EXISTS fantasyuncappedplayers (
+                player_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+                player_name VARCHAR(255) NOT NULL,
+                role VARCHAR(255) NOT NULL
+            );
+        `;
+
+        console.log(`Created "uncapped players" table`);
+
+        // Insert data into the "fantasyplayers" table
+        const insertedUncappedPlayers = await Promise.all(
+            players.map(async (player) => {
+                return client.sql`
+                    INSERT INTO fantasyuncappedplayers (player_id, player_name, role)
+                    VALUES (${player.player_id}, ${player.player_name}, ${player.role})
+                    ON CONFLICT (player_id) DO NOTHING;
+                `;
+            })
+        )
+
+        console.log(`Seeded ${insertedUncappedPlayers.length} uncapped players`);
+
+        return {
+            createTable,
+            players: insertedUncappedPlayers,
+        };
+    } catch (error) {
+        console.error('Error seeding uncapped players:', error);
         throw error;
     }
 }

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { lusitana } from '@/app/ui/fonts';
 import { ArrowPathIcon, BookOpenIcon, CalendarDaysIcon, UserGroupIcon, UserIcon, WrenchIcon, WrenchScrewdriverIcon } from '@heroicons/react/24/outline';
+import withAuth from '@/app/middleware/withAdminAuth';
 
 const options = [
     {
@@ -67,4 +68,4 @@ const Manage = () => {
     );
 };
 
-export default Manage;
+export default withAuth(Manage);

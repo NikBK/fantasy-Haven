@@ -1,4 +1,5 @@
 import Breadcrumbs from '@/app/admin/ui/BreadCrumbs';
+import CreateTeamForm from '@/app/admin/ui/manage/CreateTeamForm';
 
 const CreateTeam = () => {
     return (
@@ -7,8 +8,7 @@ const CreateTeam = () => {
                 { label: 'Manage', href: '/admin/manage' },
                 { label: 'Create Team', href: '/admin/manage/create-team', active: true },
             ]} />
-            <h2 className="text-xl font-bold mb-4">Create Team</h2>
-            {/* Your form or UI for creating a match */}
+            <CreateTeamForm />
         </div>
     );
 };
